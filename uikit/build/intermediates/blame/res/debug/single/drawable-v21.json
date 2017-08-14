@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a3e796abb6b954fbc928fcd236cdc66d607a8f18\\output\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\touch_bg.xml",
+        "source": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\res-ptr2\\drawable-v21\\touch_bg.xml"
+    },
+    {
+        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\33ae97f135160fe2703476902b9d1a0204f250d4\\output\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a3e796abb6b954fbc928fcd236cdc66d607a8f18\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a3e796abb6b954fbc928fcd236cdc66d607a8f18\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a3e796abb6b954fbc928fcd236cdc66d607a8f18\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    }
+]

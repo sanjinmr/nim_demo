@@ -1,0 +1,1107 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:2:1-496:12
+	package
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:3:5-35
+	android:versionName
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:6:5-32
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+	android:versionCode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:5:5-29
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:2:11-69
+	android:installLocation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:4:5-35
+uses-permission#android.permission.INTERNET
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:10:5-67
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:10:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:11:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:12:5-76
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:12:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:13:5-76
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:13:22-73
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:14:5-79
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:14:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:15:5-81
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:15:22-78
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:16:5-73
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:16:22-70
+uses-permission#android.permission.GET_TASKS
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:19:5-68
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:19:22-65
+uses-permission#android.permission.FLASHLIGHT
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:20:5-69
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:20:22-66
+uses-permission#android.permission.VIBRATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:21:5-66
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:21:22-63
+uses-permission#android.permission.WAKE_LOCK
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:22:5-68
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:22:22-65
+uses-permission#android.permission.BLUETOOTH
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:23:5-68
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:23:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:24:5-74
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:24:22-71
+uses-permission#android.permission.CHANGE_CONFIGURATION
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:25:5-79
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:25:22-76
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:26:5-80
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:26:22-77
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:29:5-80
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:29:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:30:5-81
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:30:22-78
+uses-permission#android.permission.CAMERA
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:33:5-65
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:33:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:34:5-71
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:34:22-68
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:35:5-75
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:35:22-72
+permission#com.netease.nim.demo.permission.RECEIVE_MSG
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:39:5-41:47
+	android:protectionLevel
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:41:9-44
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:40:9-67
+uses-permission#com.netease.nim.demo.permission.RECEIVE_MSG
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:44:5-83
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:44:22-80
+permission#com.netease.nim.demo.permission.MIPUSH_RECEIVE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:47:5-49:47
+	android:protectionLevel
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:49:9-44
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:48:9-70
+uses-permission#com.netease.nim.demo.permission.MIPUSH_RECEIVE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:50:5-86
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:50:22-83
+application
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:52:5-494:19
+MERGED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:9:5-150:19
+MERGED from [com.android.support:design:25.0.1] C:\Users\Administrator\.android\build-cache\33ae97f135160fe2703476902b9d1a0204f250d4\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.0.1] C:\Users\Administrator\.android\build-cache\a3e796abb6b954fbc928fcd236cdc66d607a8f18\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] C:\Users\Administrator\.android\build-cache\b42f12b59c76c1ae159d90f2838b4916846aa003\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.1] C:\Users\Administrator\.android\build-cache\dba9a9e9e3d75c787c606b502a9e4b7791cb64cd\output\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:transition:25.0.1] C:\Users\Administrator\.android\build-cache\03219b0577373104abf0c17e0a539ddc2e476eb9\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Administrator\.android\build-cache\6fdec233dc7793c3c2df0f1fbcf4dfbbed20d1de\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Administrator\.android\build-cache\4098dc9cb5344087e40256ac19834e7883720390\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Administrator\.android\build-cache\43e62eab19c3643bfadb3331a4d84b60dc2b2650\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\438fc138373b6c659513df8807147b98d8e84553\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.android\build-cache\9fe62f4018b59bace609aafee7fdd0c7e1585ea9\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\.android\build-cache\68455194b1136d4b2f7465c5e695a37b57f4ca9f\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\8dffa866580cb71d3c6fa8cda93b8de10dc2d33d\output\AndroidManifest.xml:25:5-20
+MERGED from [com.netease.nimlib:jsbridge:1.3.1] C:\Users\Administrator\.android\build-cache\01550dd0602f2504872f577c41724c90bdbf9b64\output\AndroidManifest.xml:11:5-15:19
+	android:label
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:56:9-41
+	android:supportsRtl
+		ADDED from [com.netease.nimlib:jsbridge:1.3.1] C:\Users\Administrator\.android\build-cache\01550dd0602f2504872f577c41724c90bdbf9b64\output\AndroidManifest.xml:14:9-35
+	android:allowBackup
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:54:9-35
+	android:icon
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:55:9-41
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:57:9-52
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:53:9-39
+meta-data#com.amap.api.v2.apikey
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:60:9-62:43
+	android:value
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:62:13-40
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:61:13-50
+meta-data#com.netease.nim.appKey
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:64:9-66:55
+	android:value
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:66:4-52
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:65:13-50
+uses-library#com.google.android.maps
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:68:9-70:40
+	android:required
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:70:13-37
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:69:13-51
+activity#com.netease.nim.demo.main.activity.WelcomeActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:73:9-88:20
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:79:13-49
+	android:label
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:77:13-45
+	android:hardwareAccelerated
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:76:13-47
+	android:launchMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:78:13-43
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:81:13-52
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:75:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:80:13-65
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:74:13-58
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER+android.intent.category.MULTIWINDOW_LAUNCHER
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:82:13-87:29
+action#android.intent.action.MAIN
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:83:17-69
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:83:25-66
+category#android.intent.category.LAUNCHER
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:85:17-77
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:85:27-74
+category#android.intent.category.MULTIWINDOW_LAUNCHER
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:86:17-89
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:86:27-86
+activity#com.netease.nim.demo.main.activity.MainActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:91:9-98:64
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:96:13-49
+	android:hardwareAccelerated
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:94:13-47
+	android:launchMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:95:13-43
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:98:13-52
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:93:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:97:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:92:13-55
+activity#com.netease.nim.demo.main.activity.MultiportActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:101:9-106:79
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:104:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:106:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:103:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:105:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:102:13-60
+activity#com.netease.nim.demo.login.LoginActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:109:9-115:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:113:13-49
+	android:label
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:112:13-42
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:115:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:111:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:114:13-46
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:110:13-48
+activity#com.netease.nim.demo.main.activity.AboutActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:118:9-124:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:122:13-49
+	android:label
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:121:13-42
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:124:13-72
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:120:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:123:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:119:13-56
+activity#com.netease.nim.demo.main.activity.SettingsActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:126:9-131:63
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:129:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:131:13-60
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:128:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:130:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:127:13-59
+activity#com.netease.nim.demo.main.activity.NoDisturbActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:133:9-138:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:136:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:138:13-72
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:135:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:137:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:134:13-60
+activity#com.netease.nim.demo.contact.activity.AddFriendActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:140:9-145:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:143:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:145:13-72
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:142:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:144:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:141:13-63
+activity#com.netease.nim.demo.contact.activity.UserProfileActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:147:9-152:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:150:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:152:13-72
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:149:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:151:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:148:13-65
+activity#com.netease.nim.demo.contact.activity.UserProfileSettingActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:154:9-159:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:157:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:159:13-72
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:156:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:158:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:155:13-72
+activity#com.netease.nim.demo.contact.activity.UserProfileEditItemActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:161:9-166:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:164:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:166:13-72
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:163:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:165:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:162:13-73
+activity#com.netease.nim.demo.contact.activity.BlackListActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:168:9-173:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:171:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:173:13-72
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:170:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:172:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:169:13-63
+activity#com.netease.nim.demo.file.browser.FileBrowserActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:176:9-182:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:180:13-49
+	android:label
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:179:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:182:13-72
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:178:13-48
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:181:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:177:13-61
+activity#com.netease.nim.demo.main.activity.SystemMessageActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:184:9-189:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:187:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:189:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:186:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:188:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:185:13-64
+activity#com.netease.nim.demo.main.activity.CustomNotificationActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:190:9-195:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:193:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:195:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:192:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:194:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:191:13-69
+activity#com.netease.nim.demo.session.activity.MessageHistoryActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:196:9-201:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:199:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:201:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:198:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:200:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:197:13-68
+activity#com.netease.nim.demo.session.activity.MessageInfoActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:202:9-207:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:205:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:207:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:204:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:206:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:203:13-65
+activity#com.netease.nim.demo.team.activity.AdvancedTeamSearchActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:209:9-214:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:212:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:214:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:211:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:213:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:210:13-69
+activity#com.netease.nim.demo.team.activity.AdvancedTeamJoinActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:216:9-221:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:219:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:221:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:218:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:220:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:217:13-67
+activity#com.netease.nim.demo.main.activity.TeamListActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:223:9-228:67
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:226:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:228:13-64
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:225:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:227:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:224:13-59
+activity#com.netease.nim.demo.main.activity.GlobalSearchActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:231:9-236:71
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:234:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:236:13-59
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:233:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:235:13-52
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:232:13-63
+activity#com.netease.nim.demo.main.activity.GlobalSearchDetailActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:238:9-242:68
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:241:13-49
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:240:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:242:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:239:13-69
+activity#com.netease.nim.demo.main.activity.GlobalSearchDetailActivity2
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:244:9-248:68
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:247:13-49
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:246:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:248:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:245:13-70
+activity#com.netease.nim.demo.session.activity.WatchSnapChatPictureActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:251:9-254:59
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:253:13-51
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:254:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:252:13-74
+activity#com.netease.nim.demo.session.activity.FileDownloadActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:257:9-260:59
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:259:13-51
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:260:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:258:13-66
+activity#com.netease.nim.demo.location.activity.LocationAmapActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:263:9-268:59
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:267:13-49
+	android:label
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:266:13-49
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:265:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:268:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:264:13-67
+activity#com.netease.nim.demo.location.activity.NavigationAmapActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:269:9-274:59
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:273:13-49
+	android:label
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:272:13-54
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:271:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:274:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:270:13-69
+activity#com.netease.nim.demo.avchat.activity.AVChatActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:277:9-282:63
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:280:13-49
+	android:launchMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:279:13-48
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:282:13-60
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:281:13-51
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:278:13-59
+activity#com.netease.nim.demo.teamavchat.activity.TeamAVChatActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:284:9-289:63
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:287:13-49
+	android:launchMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:286:13-48
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:289:13-60
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:288:13-51
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:285:13-67
+activity#com.netease.nim.demo.rts.activity.RTSActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:292:9-297:63
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:295:13-49
+	android:launchMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:294:13-48
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:297:13-60
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:296:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:293:13-53
+activity#com.netease.nim.demo.session.search.SearchMessageActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:300:9-305:72
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:303:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:305:13-69
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:302:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:304:13-52
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:301:13-65
+activity#com.netease.nim.demo.session.search.DisplayMessageActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:307:9-312:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:310:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:312:13-67
+	android:configChanges
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:309:13-63
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:311:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:308:13-66
+activity#com.netease.nim.demo.chatroom.activity.ChatRoomActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:315:9-319:70
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:317:13-49
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:319:13-67
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:318:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:316:13-63
+activity#com.netease.nim.demo.jsbridge.JsBridgeActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:321:9-326:75
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:324:13-49
+	android:label
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:323:13-46
+	android:windowSoftInputMode
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:326:13-72
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:325:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:322:13-54
+activity#com.netease.nim.demo.main.activity.RobotListActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:329:9-332:59
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:331:13-49
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:332:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:330:13-60
+activity#com.netease.nim.demo.contact.activity.RobotProfileActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:334:9-337:59
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:336:13-49
+	android:theme
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:337:13-56
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:335:13-66
+activity#com.netease.nim.demo.avchat.activity.AVChatSettingsActivity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:340:9-342:52
+	android:screenOrientation
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:342:13-49
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:341:13-67
+service#com.netease.nimlib.service.NimService
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:345:9-347:39
+	android:process
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:347:13-36
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:346:13-65
+service#com.netease.nimlib.service.NimService$Aux
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:350:9-352:39
+	android:process
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:352:13-36
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:351:13-69
+service#com.netease.nimlib.job.NIMJobService
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:355:9-359:39
+	android:process
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:359:13-36
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:357:13-36
+	android:permission
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:358:13-69
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:356:13-64
+receiver#com.netease.nimlib.service.NimReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:362:9-370:20
+	android:process
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:365:13-36
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:364:13-37
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:363:13-66
+intent-filter#android.intent.action.BOOT_COMPLETED+android.net.conn.CONNECTIVITY_CHANGE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:366:13-369:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:367:17-79
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:367:25-76
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:368:17-79
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:368:25-76
+receiver#com.netease.nimlib.service.ResponseReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:373:9-80
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:373:19-77
+service#com.netease.nimlib.service.ResponseService
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:376:9-78
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:376:18-75
+receiver#com.netease.nim.demo.receiver.CustomNotificationReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:380:9-387:20
+	android:enabled
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:382:13-35
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:383:13-37
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:381:13-64
+intent-filter#com.netease.nim.demo.ACTION.RECEIVE_CUSTOM_NOTIFICATION
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:384:13-386:29
+action#com.netease.nim.demo.ACTION.RECEIVE_CUSTOM_NOTIFICATION
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:385:17-98
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:385:25-95
+receiver#com.netease.nimlib.receiver.RTSBroadcastReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:390:9-397:20
+	android:enabled
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:392:13-35
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:393:13-37
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:391:13-76
+intent-filter#com.netease.nim.demo.ACTION.RECEIVE_RTS_NOTIFICATION
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:394:13-396:29
+action#com.netease.nim.demo.ACTION.RECEIVE_RTS_NOTIFICATION
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:395:17-95
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:395:25-92
+receiver#com.netease.nim.demo.avchat.receiver.IncomingCallReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:401:9-405:20
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:401:19-91
+intent-filter#android.intent.action.PHONE_STATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:402:13-404:29
+action#android.intent.action.PHONE_STATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:403:17-76
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:403:25-73
+service#com.xiaomi.push.service.XMJobService
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:408:9-413:42
+	android:enabled
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:410:13-35
+	android:process
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:413:13-39
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:411:13-37
+	android:permission
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:412:13-69
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:409:13-64
+service#com.xiaomi.push.service.XMPushService
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:415:9-418:42
+	android:enabled
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:417:13-35
+	android:process
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:418:13-39
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:416:13-65
+receiver#com.xiaomi.push.service.receivers.PingReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:420:9-427:20
+	android:process
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:423:13-39
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:422:13-37
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:421:13-74
+intent-filter#com.xiaomi.push.PING_TIMER
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:424:13-426:29
+action#com.xiaomi.push.PING_TIMER
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:425:17-69
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:425:25-66
+receiver#com.xiaomi.push.service.receivers.NetworkStatusReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:429:9-437:20
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:431:13-36
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:430:13-83
+intent-filter#android.intent.category.DEFAULT+android.net.conn.CONNECTIVITY_CHANGE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:432:13-436:29
+category#android.intent.category.DEFAULT
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:435:17-76
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:435:27-73
+service#com.xiaomi.mipush.sdk.PushMessageHandler
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:439:9-442:39
+	android:enabled
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:441:13-35
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:442:13-36
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:440:13-68
+service#com.xiaomi.mipush.sdk.MessageHandleService
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:444:9-446:38
+	android:enabled
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:446:13-35
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:445:13-70
+receiver#com.netease.nimlib.mixpush.mi.MiPushReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:448:9-456:20
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:450:13-36
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:449:13-72
+intent-filter#com.xiaomi.mipush.ERROR+com.xiaomi.mipush.MESSAGE_ARRIVED+com.xiaomi.mipush.RECEIVE_MESSAGE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:451:13-455:29
+	android:priority
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:451:28-57
+action#com.xiaomi.mipush.RECEIVE_MESSAGE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:452:17-76
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:452:25-73
+action#com.xiaomi.mipush.MESSAGE_ARRIVED
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:453:17-76
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:453:25-73
+action#com.xiaomi.mipush.ERROR
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:454:17-66
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:454:25-63
+meta-data#com.huawei.hms.client.appid
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:460:9-462:41
+	android:value
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:462:13-38
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:461:13-55
+provider#com.huawei.hms.update.provider.UpdateProvider
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:464:9-468:59
+	android:authorities
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:466:13-75
+	android:grantUriPermissions
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:468:13-47
+	android:exported
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:467:13-37
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:465:13-73
+receiver#com.netease.nimlib.mixpush.hw.HWPushReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:471:9-485:20
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:471:19-78
+intent-filter#com.huawei.android.push.intent.CLICK+com.huawei.android.push.intent.RECEIVE+com.huawei.android.push.intent.REGISTRATION+com.huawei.intent.action.PUSH_STATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:472:13-481:29
+	android:priority
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:472:28-57
+action#com.huawei.android.push.intent.REGISTRATION
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:474:17-86
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:474:25-83
+action#com.huawei.android.push.intent.RECEIVE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:476:17-81
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:476:25-78
+action#com.huawei.android.push.intent.CLICK
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:478:17-79
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:478:25-76
+action#com.huawei.intent.action.PUSH_STATE
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:480:17-78
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:480:25-75
+meta-data#CS_cloud_ablitity
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:482:13-484:56
+	android:value
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:484:17-53
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:483:17-49
+receiver#com.huawei.hms.support.api.push.PushEventReceiver
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:487:9-492:20
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:487:19-83
+intent-filter#com.huawei.intent.action.PUSH
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:488:13-491:29
+action#com.huawei.intent.action.PUSH
+ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:490:17-72
+	android:name
+		ADDED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml:490:25-69
+uses-sdk
+INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:multidex:1.0.1] C:\Users\Administrator\.android\build-cache\7dabed6c0d0fef5245f4252988c3b0d0a31807c7\output\AndroidManifest.xml:18:5-42
+MERGED from [:HMS-SDK-2.4.0.300:] C:\Users\Administrator\.android\build-cache\f8ea7da8fc0eff9a33006a77299e0f3fe99e057d\output\AndroidManifest.xml:5:5-7:41
+MERGED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:25.0.1] C:\Users\Administrator\.android\build-cache\33ae97f135160fe2703476902b9d1a0204f250d4\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.0.1] C:\Users\Administrator\.android\build-cache\a3e796abb6b954fbc928fcd236cdc66d607a8f18\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] C:\Users\Administrator\.android\build-cache\b42f12b59c76c1ae159d90f2838b4916846aa003\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.0.1] C:\Users\Administrator\.android\build-cache\dba9a9e9e3d75c787c606b502a9e4b7791cb64cd\output\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:transition:25.0.1] C:\Users\Administrator\.android\build-cache\03219b0577373104abf0c17e0a539ddc2e476eb9\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.0.1] C:\Users\Administrator\.android\build-cache\6fdec233dc7793c3c2df0f1fbcf4dfbbed20d1de\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.1] C:\Users\Administrator\.android\build-cache\4098dc9cb5344087e40256ac19834e7883720390\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.1] C:\Users\Administrator\.android\build-cache\43e62eab19c3643bfadb3331a4d84b60dc2b2650\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.0.1] C:\Users\Administrator\.android\build-cache\438fc138373b6c659513df8807147b98d8e84553\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.android\build-cache\9fe62f4018b59bace609aafee7fdd0c7e1585ea9\output\AndroidManifest.xml:5:5-7:41
+MERGED from [me.everything:overscroll-decor-android:1.0.4] C:\Users\Administrator\.android\build-cache\1f3f9c2dea9c39b87feda29c3716bb0ba669ed49\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:recyclerview-v7:25.0.1] C:\Users\Administrator\.android\build-cache\83845e4deab54ef1c2a22122d8a34a77ca299e08\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.0.1] C:\Users\Administrator\.android\build-cache\68455194b1136d4b2f7465c5e695a37b57f4ca9f\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.0.1] C:\Users\Administrator\.android\build-cache\8dffa866580cb71d3c6fa8cda93b8de10dc2d33d\output\AndroidManifest.xml:21:5-23:58
+MERGED from [jp.wasabeef:glide-transformations:2.0.2] C:\Users\Administrator\.android\build-cache\fe3c17c3a3bbd3f98df0f0f54a3ce81ba8c3de89\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.netease.nimlib:jsbridge:1.3.1] C:\Users\Administrator\.android\build-cache\01550dd0602f2504872f577c41724c90bdbf9b64\output\AndroidManifest.xml:7:5-9:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.0.1] C:\Users\Administrator\.android\build-cache\33ae97f135160fe2703476902b9d1a0204f250d4\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+		INJECTED from F:\codes\wyy\demo\nim_demo\demo\AndroidManifest.xml
+meta-data#com.netease.nim.uikit.glide.NIMGlideModule
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:10:9-12:43
+	android:value
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:12:13-40
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:11:13-70
+activity#com.netease.nim.uikit.session.activity.P2PMessageActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:19:9-24:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:22:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:24:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:21:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:23:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:20:13-85
+activity#com.netease.nim.uikit.session.activity.TeamMessageActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:25:9-30:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:28:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:30:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:27:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:29:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:26:13-86
+activity#com.netease.nim.uikit.team.activity.NormalTeamInfoActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:33:9-38:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:36:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:38:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:35:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:37:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:34:13-86
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamInfoActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:39:9-44:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:42:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:44:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:41:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:43:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:40:13-88
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamMemberActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:45:9-50:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:48:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:50:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:47:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:49:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:46:13-90
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamAnnounceActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:51:9-56:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:54:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:56:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:53:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:55:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:52:13-92
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamMemberInfoActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:57:9-62:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:60:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:62:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:59:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:61:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:58:13-94
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamNicknameActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:63:9-68:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:66:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:68:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:65:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:67:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:64:13-92
+activity#com.netease.nim.uikit.team.activity.AdvancedTeamCreateAnnounceActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:69:9-74:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:72:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:74:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:71:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:73:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:70:13-98
+activity#com.netease.nim.uikit.team.activity.TeamPropertySettingActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:75:9-80:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:78:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:80:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:77:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:79:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:76:13-91
+activity#com.netease.nim.uikit.contact_selector.activity.ContactSelectActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:83:9-89:67
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:87:13-49
+	android:label
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:86:13-53
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:89:13-64
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:85:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:88:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:84:13-97
+activity#com.netease.nim.uikit.contact.ait.AitContactSelectorActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:92:9-95:59
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:94:13-49
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:95:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:93:13-88
+activity#com.netease.nim.uikit.common.media.picker.activity.PickImageActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:98:9-101:59
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:100:13-49
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:101:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:99:13-96
+activity#com.netease.nim.uikit.common.media.picker.activity.CropImageActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:102:9-105:59
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:104:13-49
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:105:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:103:13-96
+activity#com.netease.nim.uikit.common.media.picker.activity.PickerAlbumActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:106:9-109:59
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:108:13-49
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:109:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:107:13-98
+activity#com.netease.nim.uikit.common.media.picker.activity.PickerAlbumPreviewActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:110:9-113:59
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:112:13-49
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:113:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:111:13-105
+activity#com.netease.nim.uikit.common.media.picker.activity.PreviewImageFromLocalActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:114:9-119:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:117:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:119:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:116:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:118:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:115:13-108
+activity#com.netease.nim.uikit.common.media.picker.activity.PreviewImageFromCameraActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:120:9-126:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:124:13-49
+	android:label
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:123:13-53
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:126:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:122:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:125:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:121:13-109
+activity#com.netease.nim.uikit.session.activity.CaptureVideoActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:129:9-134:70
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:132:13-49
+	android:windowSoftInputMode
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:134:13-67
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:131:13-63
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:133:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:130:13-87
+activity#com.netease.nim.uikit.session.activity.WatchVideoActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:135:9-139:48
+	android:label
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:138:13-47
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:137:13-74
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:139:13-45
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:136:13-85
+activity#com.netease.nim.uikit.session.activity.WatchMessagePictureActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:142:9-145:59
+	android:configChanges
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:144:13-51
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:145:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:143:13-94
+activity#com.netease.nim.uikit.team.activity.TeamMemberListActivity
+ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:146:9-149:59
+	android:screenOrientation
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:148:13-49
+	android:theme
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:149:13-56
+	android:name
+		ADDED from [nim_demo:uikit:unspecified] F:\codes\wyy\demo\nim_demo\uikit\build\intermediates\bundles\default\AndroidManifest.xml:147:13-86

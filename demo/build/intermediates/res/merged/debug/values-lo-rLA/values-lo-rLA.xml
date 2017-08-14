@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"ກັບໄປໜ້າຫຼັກ"</string>
+    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
+    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"ຂຶ້ນເທິງ"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"ໂຕເລືອກອື່ນ"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"ແລ້ວໆ"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"ເບິ່ງທັງຫມົດ"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"ເລືອກແອັບຯ"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"ປິດ"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"ເປີດ"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"ຊອກຫາ"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"ລຶບຂໍ້ຄວາມຊອກຫາ"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"ຊອກຫາ"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"ຊອກຫາ"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"ສົ່ງການຊອກຫາ"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"ຊອກຫາດ້ວຍສຽງ"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"ແບ່ງປັນກັບ"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"ແບ່ງ​ປັນ​ກັບ​ %s"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"ຫຍໍ້"</string>
+    <string name="hms_abort">"ຢຸດ"</string>
+    <string name="hms_abort_message">"ຢຸດ​ການດາວ​ໂຫຼດ​ບໍ?"</string>
+    <string name="hms_cancel">"ຍົກ​ເລີກ​"</string>
+    <string name="hms_check_failure">"ຊອກ​ຫາ​ການ​ອັບ​ເດດ​ບໍ່​ສຳ​ເລັດ."</string>
+    <string name="hms_check_no_update">"ທ່ານ​ກຳ​ລັງ​ໃຊ້​ເວີ​ຊັນ​ຫຼ້າ​ສຸດ​ຢູ່​ແລ້ວ."</string>
+    <string name="hms_checking">"ກຳ​ລັງ​ກວດ​ຫາ​ການ​ອັບ​ເດດ..."</string>
+    <string name="hms_confirm">"ຕົກ​ລົງ"</string>
+    <string name="hms_download_failure">"ດາວ​ໂຫຼດ​ແພັກ​ເກດ​ການ​ບໍ​ລິ​ການ Huawei Mobile ບໍ່​ສຳ​ເລັດ."</string>
+    <string name="hms_download_no_space">"ບໍ່​ມີ​ພື້ນ​ທີ່​ຫວ່າງພຽງ​ພໍ. ບໍ່​ສາ​ມາດ​ດາວ​ໂຫຼດ​ສຳ​ເລັດ​ໄດ້."</string>
+    <string name="hms_download_retry">"ດາວ​ໂຫຼດ​ບໍ່​ສຳ​ເລັດ. ລອງໃໝ່ອີກບໍ?"</string>
+    <string name="hms_downloading">"ກຳ​ລັງ​ດາວ​ໂຫຼດການ​ບໍ​ລິ​ການ Huawei Mobile | ຄື​ບ​ໜ້າ: %d%%"</string>
+    <string name="hms_install">"​ຕິດ​ຕັ້ງ"</string>
+    <string name="hms_install_message">"ຈະ​ຕ້ອງ​ຕິດ​ຕັ້ງ​ການ​ບໍ​ລິ​ການ Huawei Mobile ເພື່ອ​ໃຊ້​ຟີ​ເຈີ​ນີ້. ​ຕິດ​ຕັ້ງບໍ?"</string>
+    <string name="hms_retry">"ລອງໃໝ່ອີກ"</string>
+    <string name="hms_update">"ອັບເດດ"</string>
+    <string name="hms_update_message">"ອັບ​ເດດ​ເປັນການ​ບໍ​ລິ​ການ Huawei Mobile ​ເວີ​ຊັນ​ຫຼ້າ​ສຸດ ເພື່ອ​ໃຊ້​ຟີ​ເຈີ​ນີ້. ອັບ​ເດດ​ດຽວ​ນີ້​ບໍ?"</string>
+    <string name="hms_update_title">"ການ​ບໍ​ລິ​ການ Huawei Mobile"</string>
+    <string msgid="146198913615257606" name="search_menu_title">"ຊອກຫາ"</string>
+    <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+</resources>
