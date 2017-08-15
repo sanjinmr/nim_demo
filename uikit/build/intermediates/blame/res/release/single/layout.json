@@ -12,12 +12,12 @@
         "source": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\res\\layout\\nim_message_item_text.xml"
     },
     {
-        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_message_item_picture.xml",
-        "source": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\res\\layout\\nim_message_item_picture.xml"
-    },
-    {
         "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_message_item_unknown.xml",
         "source": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\res\\layout\\nim_message_item_unknown.xml"
+    },
+    {
+        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_message_item_picture.xml",
+        "source": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\res\\layout\\nim_message_item_picture.xml"
     },
     {
         "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_watch_video_activity.xml",
@@ -28,12 +28,12 @@
         "source": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\res\\layout\\nim_advanced_team_nickname_activity.xml"
     },
     {
-        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_media_custom.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a3e796abb6b954fbc928fcd236cdc66d607a8f18\\output\\res\\layout\\notification_template_media_custom.xml"
-    },
-    {
         "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_team_name_activity.xml",
         "source": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\res\\layout\\nim_team_name_activity.xml"
+    },
+    {
+        "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a3e796abb6b954fbc928fcd236cdc66d607a8f18\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
         "merged": "F:\\codes\\wyy\\demo\\nim_demo\\uikit\\build\\intermediates\\res\\merged\\release\\layout\\nim_team_member_list_item.xml",

@@ -62,6 +62,7 @@ public class NimApplication extends Application {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
         MultiDex.install(this);
+
     }
 
     public void onCreate() {
@@ -81,6 +82,11 @@ public class NimApplication extends Application {
         // 网易云信SDK初始化（启动后台服务，若已经存在用户登录信息， SDK 将完成自动登录）
         // 登录网易信：loginRequest = NIMClient.getService(AuthService.class).login(new LoginInfo(account, token));
         //  监听登录网易信： loginRequest.setCallback(new RequestCallback<LoginInfo>() {...}
+        // 说明：在自动登录过程中，如果没有网络或者网络断开或者与网易云通信服务器建立连接失败，
+        // 会上报在线状态 NET_BROKEN，表示当前网络不可用，当网络恢复的时候，会触发断网自动重连；
+        // 如果连接建立成功但登录超时，会上报在线状态 UNLOGIN，并触发自动重连，无需上层手动调用登录接口。
+        // 特别提醒: 在自动登录成功前，调用服务器相关请求接口（由于与网易云通信服务器连接尚未建立成功，会导致发包超时）会报408错误。
+        // 但可以调用本地数据库相关接口获取本地数据（自动登录的情况下会自动打开相关账号的数据库）。自动登录过程中也会有用户在线状态回调。
         NIMClient.init(this, getLoginInfo(), getOptions());
 
         // 空的？
@@ -90,13 +96,24 @@ public class NimApplication extends Application {
         AppCrashHandler.getInstance(this);
 
         // 在主进程中初始化UI组件
+        // 注意：除了 NIMClient.init 接口外，其他 SDK 暴露的接口都只能在 UI 进程调用。
+        // 如果 APP 包含远程 service，该 APP 的 Application 的 onCreate 会多次调用。
+        // 因此，如果需要在 onCreate 中调用除 init 接口外的其他接口，应先判断当前所属进程，
+        // 并只有在当前是 UI 进程时才调用。
         if (inMainProcess()) {
+            // 注意：以下操作必须在主进程中进行
+            // 1、UI相关初始化操作
+            // 2、相关Service调用
 
             // init pinyin  什么用？
             PinYin.init(this);
             PinYin.validate();
 
             // 初始化UIKit模块
+            // SDK 由于需要保持后台运行，典型场景下会在独立进程中运行，
+            // 第一类接口基本上都是从主进程发起调用，然后在后台进程执行，
+            // 最后再将结果返回给主进程。因此，如无特殊说明，所有接口均为异步调用，
+            // 开发者无需担心调用 SDK 接口阻塞 UI 的问题。
             initUIKit();
 
             // 注册通知消息过滤器
@@ -118,8 +135,12 @@ public class NimApplication extends Application {
         }
     }
 
-
+    /**
+     * 如果已经存在用户登录信息，返回LoginInfo，否则返回null即可
+     * @return
+     */
     private LoginInfo getLoginInfo() {
+        // 从本地读取上次登录成功时保存的用户登录信息
         String account = Preferences.getUserAccount();
         String token = Preferences.getUserToken();
 
@@ -131,6 +152,10 @@ public class NimApplication extends Application {
         }
     }
 
+    /**
+     * 如果返回值为 null，则全部使用默认参数。
+     * @return
+     */
     private SDKOptions getOptions() {
         SDKOptions options = new SDKOptions();
 
@@ -138,6 +163,14 @@ public class NimApplication extends Application {
         initStatusBarNotificationConfig(options);
 
         // 配置保存图片，文件，log等数据的目录
+        // 如果不设置，则默认为“/{外卡根目录}/{app_package_name}/nim/”
+        // 其中外卡根目录获取方式为 Environment.getExternalStorageDirectory().getPath()
+        // 如果你的 APP 需要清除缓存功能，可扫描该目录下的文件，按照你们的规则清理即可。
+        // 在 SDK 初始化完成后可以通过 NimClient#getSdkStorageDirPath 获取 SDK 数据缓存目录。
+        // 配置保存图片，文件，log 等数据的目录
+        // 如果 options 中没有设置这个值，SDK 会使用下面代码示例中的位置作为 SDK 的数据目录。
+        // 该目录目前包含 log, file, image, audio, video, thumb 这6个目录。
+        // 如果第三方 APP 需要缓存清理功能， 清理这个目录下面个子目录的内容即可。
         options.sdkStorageRootPath = Environment.getExternalStorageDirectory() + "/" + getPackageName() + "/nim";
 
         // 配置数据库加密秘钥
@@ -147,9 +180,12 @@ public class NimApplication extends Application {
         options.preloadAttach = true;
 
         // 配置附件缩略图的尺寸大小，
+        // 配置附件缩略图的尺寸大小。表示向服务器请求缩略图文件的大小
+        // 该值一般应根据屏幕尺寸来确定， 默认值为 Screen.width / 2
         options.thumbnailSize = MsgViewHolderThumbBase.getImageMaxEdge();
 
         // 用户信息提供者
+        // 用户资料提供者, 目前主要用于提供用户资料，用于新消息通知栏中显示消息来源的头像和昵称
         options.userInfoProvider = new DefaultUserInfoProvider(this);
 
         // 定制通知栏提醒文案（可选，如果不定制将采用SDK默认文案）
@@ -176,6 +212,10 @@ public class NimApplication extends Application {
         }
     }
 
+    /**
+     * 如果将新消息通知提醒托管给 SDK 完成，需要添加以下配置。否则无需设置。
+     * @param options
+     */
     private void initStatusBarNotificationConfig(SDKOptions options) {
         // load 应用的状态栏配置
         StatusBarNotificationConfig config = loadStatusBarNotificationConfig();
@@ -198,7 +238,9 @@ public class NimApplication extends Application {
         options.statusBarNotificationConfig = userConfig;
     }
 
-    // 这里开发者可以自定义该应用初始的 StatusBarNotificationConfig
+    /**
+     * 这里开发者可以自定义该应用初始的 StatusBarNotificationConfig
+     */
     private StatusBarNotificationConfig loadStatusBarNotificationConfig() {
         StatusBarNotificationConfig config = new StatusBarNotificationConfig();
         // 点击通知需要跳转到的界面

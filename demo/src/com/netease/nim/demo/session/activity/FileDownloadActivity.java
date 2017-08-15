@@ -90,6 +90,8 @@ public class FileDownloadActivity extends UI {
         }
     }
 
+    // 下载之前判断一下是否已经下载。若重复下载，会报错误码414。（以SnapChatAttachment为例）
+    // 错误码414可能是重复下载，或者下载参数错误。
     private boolean isOriginDataHasDownloaded(final IMMessage message) {
         if (!TextUtils.isEmpty(((FileAttachment) message.getAttachment()).getPath())) {
             return true;

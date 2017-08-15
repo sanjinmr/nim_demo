@@ -134,7 +134,6 @@ public class WelcomeActivity extends UI {
                     parseNormalIntent(intent);
                 }
             }
-
             if (!firstEnter && intent == null) {
                 finish();
             } else {

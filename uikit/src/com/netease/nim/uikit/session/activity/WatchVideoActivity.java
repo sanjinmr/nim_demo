@@ -390,14 +390,26 @@ public class WatchVideoActivity extends UI implements Callback {
         }
     }
 
+    /**
+     * 监听消息发送状态
+     * @param register true表示注册监听 false表示注销监听
+     */
     private void registerObservers(boolean register) {
+        // 监听消息发送状态的变化通知
         NIMClient.getService(MsgServiceObserve.class).observeMsgStatus(statusObserver, register);
+        // 如果发送的多媒体文件消息，还需要监听文件的上传进度。
         NIMClient.getService(MsgServiceObserve.class).observeAttachmentProgress(attachmentProgressObserver, register);
     }
 
+    /**
+     * 监听消息状态变化
+     */
     private Observer<IMMessage> statusObserver = new Observer<IMMessage>() {
         @Override
         public void onEvent(IMMessage msg) {
+            // 1、根据sessionId判断是否是自己的消息
+            // 2、更改内存中消息的状态
+            // 3、刷新界面
             if (!msg.isTheSame(message) || isDestroyedCompatible()) {
                 return;
             }
@@ -410,9 +422,14 @@ public class WatchVideoActivity extends UI implements Callback {
         }
     };
 
+    /**
+     * 如果发送的多媒体文件消息，还需要监听文件的上传进度
+     */
     private Observer<AttachmentProgress> attachmentProgressObserver = new Observer<AttachmentProgress>() {
         @Override
         public void onEvent(AttachmentProgress p) {
+            // 参数为附件的传输进度，可根据 progress 中的 uuid 查找具体的消息对象，更新 UI
+            // 上传附件和下载附件的进度监听均可以通过此接口完成。
             long total = p.getTotal();
             long progress = p.getTransferred();
             float percent = (float) progress / (float) total;
@@ -453,6 +470,8 @@ public class WatchVideoActivity extends UI implements Callback {
         });
     }
 
+    // 下载之前判断一下是否已经下载。若重复下载，会报错误码414。（以SnapChatAttachment为例）
+    // 错误码414可能是重复下载，或者下载参数错误。
     private boolean isVideoHasDownloaded(final IMMessage message) {
         if (message.getAttachStatus() == AttachStatusEnum.transferred &&
                 !TextUtils.isEmpty(((VideoAttachment) message.getAttachment()).getPath())) {
@@ -466,6 +485,8 @@ public class WatchVideoActivity extends UI implements Callback {
         if (!isVideoHasDownloaded(message)) {
             // async download original image
             onDownloadStart(message);
+            // 下载附件，参数1位消息对象，参数2为是下载缩略图还是下载原图。
+            // 因为下载的文件可能会很大，这个接口返回类型为 AbortableFuture ，允许用户中途取消下载。
             downloadFuture = NIMClient.getService(MsgService.class).downloadAttachment(message, false);
             downloading = true;
         }

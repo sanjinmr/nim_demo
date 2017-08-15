@@ -259,6 +259,10 @@ public class HomeFragment extends TFragment implements OnPageChangeListener, Rem
 
                 if (id instanceof RecentContact) {
                     RecentContact r = (RecentContact) id;
+                    // 如果用户在开始聊天时，开发者调用了 setChattingAccount 接口，SDK会自动管理消息的未读数。
+                    // 当收到新消息时，自动将未读数清零。如果第三方 APP 需要不进入聊天窗口，就需要将未读数清零，可以通过调用如下接口来实现：
+                    // 触发 MsgServiceObserve#observeRecentContact(Observer, boolean) 通知，
+                    // 通知中的 RecentContact 对象的未读数为0
                     NIMClient.getService(MsgService.class).clearUnreadCount(r.getContactId(), r.getSessionType());
                     LogUtil.i("HomeFragment", "clearUnreadCount, sessionId=" + r.getContactId());
                 } else if (id instanceof String) {

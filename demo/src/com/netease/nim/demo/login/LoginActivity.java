@@ -261,7 +261,6 @@ public class LoginActivity extends UI implements OnKeyListener {
     /**
      * ***************************************** 登录 **************************************
      */
-
     private void login() {
         DialogMaker.showProgressDialog(this, null, getString(R.string.logining), true, new DialogInterface.OnCancelListener() {
             @Override
@@ -281,6 +280,9 @@ public class LoginActivity extends UI implements OnKeyListener {
         final String token = tokenFromPassword(loginPasswordEdit.getEditableText().toString());
         // 登录
         loginRequest = NimUIKit.doLogin(new LoginInfo(account, token), new RequestCallback<LoginInfo>() {
+            /**
+             * @param param
+             */
             @Override
             public void onSuccess(LoginInfo param) {
                 LogUtil.i(TAG, "login success");
@@ -298,6 +300,12 @@ public class LoginActivity extends UI implements OnKeyListener {
                 finish();
             }
 
+            /**
+             * 在手动登录过程中，如果网络断开或者与网易云通信服务器建立连接失败，会返回登录失败（错误码 415），
+             * 在线状态切换为 NET_BROKEN； 如果连接建立成功，SDK 发出登录请求后网易云通信服务器一直没有响应，
+             * 那么 30s 后将导致登录超时，那么会返回登录失败（错误码 408），在线状态切换为 UNLOGIN。
+             * @param code
+             */
             @Override
             public void onFailed(int code) {
                 onLoginDone();
@@ -503,6 +511,10 @@ public class LoginActivity extends UI implements OnKeyListener {
         final String token = tokenFromPassword(loginPasswordEdit.getEditableText().toString());
 
         // 执行假登录
+        // 离线查看数据
+        // 对于一些弱IM场景，需要在登录成功前或者未登录状态下访问指定账号的数据（聊天记录、好友资料等）。 SDK 提供两种方案：
+        // 使用自动登录。在登录成功前，可以访问 SDK 服务来读取本地数据（但不能发送数据）。
+        // 使用 AuthService#openLocalCache 接口打开本地数据，这是个同步方法，打开后即可读取 SDK 数据库中的记录。可以通过注销来切换账号查看本地数据。
         boolean res = NIMClient.getService(AuthService.class).openLocalCache(account); // SDK会将DB打开，支持查询。
         Log.i("test", "fake login " + (res ? "success" : "failed"));
 

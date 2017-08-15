@@ -17,8 +17,8 @@ import com.netease.nim.uikit.contact_selector.activity.ContactSelectActivity;
 import com.netease.nim.uikit.custom.DefalutContactEventListener;
 import com.netease.nim.uikit.custom.DefalutP2PSessionCustomization;
 import com.netease.nim.uikit.custom.DefalutTeamSessionCustomization;
-import com.netease.nim.uikit.custom.DefaultUserInfoProvider;
 import com.netease.nim.uikit.custom.DefaultContactProvider;
+import com.netease.nim.uikit.custom.DefaultUserInfoProvider;
 import com.netease.nim.uikit.glide.ImageLoaderKit;
 import com.netease.nim.uikit.session.SessionCustomization;
 import com.netease.nim.uikit.session.SessionEventListener;
@@ -230,18 +230,25 @@ public final class NimUIKit {
 
     /**
      * 手动登陆，由于手动登陆完成之后，UIKit 需要设置账号、构建缓存等，使用此方法登陆 UIKit 会将这部分逻辑处理好，开发者只需要处理自己的逻辑即可
-     *
+     *  登录成功之前，调用服务器相关请求接口（由于与网易云通信服务器连接尚未建立成功，会导致发包超时）会报408错误；
+     *  调用本地数据库相关接口（手动登录的情况下数据库未打开），会报1000错误，建议用户在登录成功之后，再进行相关接口调用。
      * @param loginInfo 登陆账号信息
      * @param callback  登陆结果回调
      */
     public static AbortableFuture<LoginInfo> doLogin(LoginInfo loginInfo, final RequestCallback<LoginInfo> callback) {
 
+        // 该接口返回类型为 AbortableFuture，允许用户在后面取消登录操作。
+        // 如果服务器一直没有响应，30 秒后 RequestCallback 的 onFailed 会被调用，参数为 408 （网络连接超时）
         AbortableFuture<LoginInfo> loginRequest = NIMClient.getService(AuthService.class).login(loginInfo);
         loginRequest.setCallback(new RequestCallback<LoginInfo>() {
             @Override
             public void onSuccess(LoginInfo loginInfo) {
                 NimUIKit.setAccount(loginInfo.getAccount());
+                // 一般来说， APP 开发者在登录完成后可以开始构建数据缓存：登录完成后立即从 SDK 读取数据构建缓存，此时加载到的可能是旧数据；
+                // 在 Application 的 onCreate 中注册 XXXServiceObserver 来监听数据变化，
+                // 那么在同步过程中， APP 会收到数据更新通知，此时直接更新缓存。当同步完成时，缓存也就构建完成了。
                 DataCacheManager.buildDataCacheAsync();
+                // 构建图像缓存
                 getImageLoaderKit().buildImageCache();
                 callback.onSuccess(loginInfo);
             }

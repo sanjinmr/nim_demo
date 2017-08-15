@@ -46,6 +46,17 @@ public class LoginSyncDataStatusObserver {
     /**
      * 在App启动时向SDK注册登录后同步数据过程状态的通知
      * 调用时机：主进程Application onCreate中
+     *
+     * 数据同步状态通知
+
+     登录成功后，SDK 会立即同步数据（用户资料、用户关系、群资料、离线消息、漫游消息等），同步开始和同步完成都会发出通知。
+
+     注册登录同步状态通知：
+
+     一般来说， APP 开发者在登录完成后可以开始构建数据缓存：登录完成后立即从 SDK 读取数据构建缓存，此时加载到的可能是旧数据；
+      在 Application 的 onCreate 中注册 XXXServiceObserver 来监听数据变化，
+      那么在同步过程中， APP 会收到数据更新通知，此时直接更新缓存。当同步完成时，缓存也就构建完成了。
+
      */
     public void registerLoginSyncDataStatus(boolean register) {
         LogUtil.i(TAG, "observe login sync data completed event on Application create");
@@ -57,9 +68,13 @@ public class LoginSyncDataStatusObserver {
         public void onEvent(LoginSyncStatus status) {
             syncStatus = status;
             if (status == LoginSyncStatus.BEGIN_SYNC) {
+                // 同步开始时，SDK 数据库中的数据可能还是旧数据
+                // （如果是首次登录，那么 SDK 数据库中还没有数据，重新登录时 SDK 数据库中还是上一次退出时保存的数据）。
                 LogUtil.i(TAG, "login sync data begin");
             } else if (status == LoginSyncStatus.SYNC_COMPLETED) {
+                // 同步完成时， SDK 数据库已完成更新。
                 LogUtil.i(TAG, "login sync data completed");
+                // 同步数据完成，并遍历观察集合，回调给上层调用者
                 onLoginSyncDataCompleted(false);
             }
         }

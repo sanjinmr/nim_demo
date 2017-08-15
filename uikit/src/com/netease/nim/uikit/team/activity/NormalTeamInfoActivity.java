@@ -613,6 +613,8 @@ public class NormalTeamInfoActivity extends UI implements OnClickListener, TAdap
                 Toast.makeText(NormalTeamInfoActivity.this, R.string.quit_normal_team_success, Toast.LENGTH_SHORT).show();
                 setResult(Activity.RESULT_OK, new Intent().putExtra(TeamExtras.RESULT_EXTRA_REASON, TeamExtras.RESULT_EXTRA_REASON_QUIT));
 
+                // 移除最近会话列表中的项
+                // MsgService 提供了两种方法： deleteRecentContact 和 deleteRecentContact2，区别在于后者会触发 MsgServiceObserve#observeRecentContactDeleted 通知。
                 NIMClient.getService(MsgService.class).deleteRecentContact2(teamId, SessionTypeEnum.Team);
                 finish();
             }

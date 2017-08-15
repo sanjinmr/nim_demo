@@ -1,4 +1,4 @@
-#Wed Aug 09 17:26:17 GMT+08:00 2017
+#Tue Aug 15 10:15:41 GMT+08:00 2017
 base.0=F\:\\codes\\wyy\\demo\\nim_demo\\demo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.1=classes2.dex
 renamed.0=classes.dex

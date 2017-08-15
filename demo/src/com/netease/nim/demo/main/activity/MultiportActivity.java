@@ -97,6 +97,28 @@ public class MultiportActivity extends UI {
         return clientName;
     }
 
+    /**
+     *
+     * 如果需要主动踢掉当前同时在线的其他端, 需要传入 OnlineClient：
+     * 当被其他端踢掉，可以通过在线状态观察者来接收监听消息：
+     *
+     NIMClient.getService(AuthServiceObserver.class).observeOnlineStatus(
+         new Observer<StatusCode> () {
+         public void onEvent(StatusCode status) {
+         // 判断在线状态，如果为被其他端踢掉，做登出操作
+         }
+     }, true);
+
+     网易云通信内置多端登录互踢策略为：
+     移动端( Android 、 iOS )互踢，桌面端( PC 、 Mac 、 Web )互踢，移动端和桌面端共存（ 可以采用上述 kickOtherClient 主动踢下共存的其他端）。
+
+     如果当前的互踢策略无法满足业务需求的话，可以联系我们取消内置互踢，根据多端登录的回调和当前的设备列表，判断本设备是否需要被踢出。
+     如果需要踢出，直接调用登出接口并在界面上给出相关提示即可
+
+     * @param client
+     * @param layout
+     * @param finished
+     */
     private void kickOtherOut(OnlineClient client, final View layout, final int finished) {
         NIMClient.getService(AuthService.class).kickOtherClient(client).setCallback(new RequestCallback<Void>() {
             @Override

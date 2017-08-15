@@ -271,6 +271,10 @@ public class SettingsActivity extends UI implements SettingsAdapter.SwitchChange
 
     /**
      * 注销
+     * 登出
+     如果用户手动登出，不再接收消息和提醒，开发者可以调用 logout 方法，该方法没有回调。
+
+     注意: 登出操作，不要放在 Activity(Fragment) 的 onDestroy 方法中。
      */
     private void logout() {
         removeLoginState();

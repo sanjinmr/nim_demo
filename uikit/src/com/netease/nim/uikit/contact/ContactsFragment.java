@@ -339,8 +339,11 @@ public class ContactsFragment extends TFragment {
             UserInfoHelper.unregisterObserver(userInfoObserver);
         }
 
+        // 监听好友信息
         FriendDataCache.getInstance().registerFriendDataChangedObserver(friendDataChangedObserver, register);
 
+        // 等待同步数据完成
+        // 监听数据是否同步成功，来更新最近联系人相关信息
         LoginSyncDataStatusObserver.getInstance().observeSyncDataCompletedEvent(loginSyncCompletedObserver);
     }
 

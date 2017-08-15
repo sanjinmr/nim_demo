@@ -192,18 +192,28 @@ public class MessageFragment extends TFragment implements ModuleProxy {
      * ****************** 观察者 **********************
      */
 
+    /**
+     *  监听消息
+     * @param register
+     */
     private void registerObservers(boolean register) {
         MsgServiceObserve service = NIMClient.getService(MsgServiceObserve.class);
+        // 添加消息接收观察者，在有新消息到达时，第三方 APP 就可以接收到通知
         service.observeReceiveMessage(incomingMessageObserver, register);
         service.observeMessageReceipt(messageReceiptObserver, register);
     }
 
     /**
+     * 接收消息
+     * 通过添加消息接收观察者，在有新消息到达时，第三方 APP 就可以接收到通知。代码如下：
      * 消息接收观察者
+     * 该代码的典型场景为消息对话界面，在界面 onCreate 里注册消息接收观察者，
+     * 在 onDestroy 中注销观察者。在收到消息时，判断是否是当前聊天对象的消息，如果是，加入到列表中显示。
      */
     Observer<List<IMMessage>> incomingMessageObserver = new Observer<List<IMMessage>>() {
         @Override
         public void onEvent(List<IMMessage> messages) {
+            // 处理新收到的消息，为了上传处理方便，SDK 保证参数 messages 全部来自同一个聊天对象。
             if (messages == null || messages.isEmpty()) {
                 return;
             }

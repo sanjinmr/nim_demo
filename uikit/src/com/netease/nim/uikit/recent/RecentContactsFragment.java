@@ -53,6 +53,17 @@ import static com.netease.nim.uikit.common.ui.dialog.CustomAlertDialog.onSeparat
 
 /**
  * 最近联系人列表(会话列表)
+ * 最近会话
+ 最近会话 RecentContact ，也可称作会话列表或者最近联系人列表，它记录了与用户最近有过会话的联系人信息，
+ 包括联系人帐号、联系人类型、最近一条消息的时间、消息状态、消息内容、未读条数等信息。
+ RecentContact 中还提供了一个扩展标签 tag（用于做联系人置顶、最近会话列表排序等扩展用途）
+ 和一个扩展字段 extension （是一个Map，可用于做群@等扩展用途），并支持动态的更新这两个字段。
+ 最近会话列表由 SDK 维护并提供查询、监听变化的接口，只要与某个用户或者群组有产生聊天（自己发送消息或者收到消息），
+ SDK 会自动更新最近会话列表并通知上层，开发者无需手动更新。
+ 某些场景下，开发者可能需要手动向最近会话列表中插入一条会话项（即插入一个最近联系人），
+ 例如：在创建完高级群时，需要在最近会话列表中显示该群的会话项。由创建高级群完成时并不会收到任何消息，
+ SDK 并不会立即更新最近会话，此时要满足需求，可以在创建群成功的回调中，插入一条本地消息， 即调用 MsgService#saveMessageToLocal。
+ 注意：最近会话是本地的，不会漫游。漫游与消息相关，与最近会话无关。
  * <p/>
  * Created by huangjun on 2015/2/1.
  */
@@ -87,6 +98,7 @@ public class RecentContactsFragment extends TFragment {
 
         findViews();
         initMessageList();
+        // 查询最近会话人列表
         requestMessages(true);
         registerObservers(true);
         registerDropCompletedListener(true);
@@ -243,6 +255,8 @@ public class RecentContactsFragment extends TFragment {
             @Override
             public void onClick() {
                 // 删除会话，删除后，消息历史被一起删除
+                // 移除最近会话列表中的项
+                // MsgService 提供了两种方法： deleteRecentContact 和 deleteRecentContact2，区别在于后者会触发 MsgServiceObserve#observeRecentContactDeleted 通知。
                 NIMClient.getService(MsgService.class).deleteRecentContact(recent);
                 NIMClient.getService(MsgService.class).clearChattingHistory(recent.getContactId(), recent.getSessionType());
                 adapter.remove(position);
@@ -271,6 +285,8 @@ public class RecentContactsFragment extends TFragment {
             }
         });
 
+        // 删除指定最近联系人的漫游消息
+        // 不删除本地消息，但如果在其他端登录，当前时间点该会话已经产生的消息不漫游。
         alertDialog.addItem("删除该聊天（仅服务器）", new onSeparateItemClickListener() {
             @Override
             public void onClick() {
@@ -313,6 +329,11 @@ public class RecentContactsFragment extends TFragment {
 
     private List<RecentContact> loadedRecents;
 
+    /**
+     * 获取最近会话列表：
+     * 最近会话是本地的，不会漫游。漫游与消息相关，与最近会话无关。
+     * @param delay
+     */
     private void requestMessages(boolean delay) {
         if (msgLoaded) {
             return;
@@ -329,6 +350,7 @@ public class RecentContactsFragment extends TFragment {
 
                     @Override
                     public void onResult(int code, List<RecentContact> recents, Throwable exception) {
+                        // recents参数即为最近联系人列表（最近会话列表）
                         if (code != ResponseCode.RES_SUCCESS || recents == null) {
                             return;
                         }
@@ -364,6 +386,20 @@ public class RecentContactsFragment extends TFragment {
         }
     }
 
+    /**
+     * 获取会话未读数总数，总两种方法：
+     1. 通过接口直接获取：
+
+     int unreadNum = NIMClient.getService(MsgService.class).getTotalUnreadCount();
+     2. 对最近联系人列表中的每个最近联系人的未读数进行求和：
+
+     int unreadNum = 0;
+     for (RecentContact r : items) {
+     unreadNum += r.getUnreadCount();
+     }
+     说明：多端同时登录时，在其他端进行查看，客户端不会进行未读数清零操作。
+     * @param unreadChanged
+     */
     private void refreshMessages(boolean unreadChanged) {
         sortRecentContacts(items);
         notifyDataSetChanged();
@@ -417,9 +453,10 @@ public class RecentContactsFragment extends TFragment {
      */
     private void registerObservers(boolean register) {
         MsgServiceObserve service = NIMClient.getService(MsgServiceObserve.class);
-        service.observeReceiveMessage(messageReceiverObserver, register);
-        service.observeRecentContact(messageObserver, register);
-        service.observeMsgStatus(statusObserver, register);
+        service.observeReceiveMessage(messageReceiverObserver, register); // 监听消息接受状态
+        //  注册/注销观察者
+        service.observeRecentContact(messageObserver, register); // 监听最近会话变更
+        service.observeMsgStatus(statusObserver, register); // 监听消息发送状态的变化通知
         service.observeRecentContactDeleted(deleteObserver, register);
 
         registerTeamUpdateObserver(register);
@@ -482,6 +519,22 @@ public class RecentContactsFragment extends TFragment {
         }
     };
 
+    /**
+     * 监听最近会话变更
+     在收发消息的同时，SDK 会更新对应聊天对象的最近联系人资料。当有消息收发时，SDK 会发出最近联系人更新通知：
+     1、创建观察者对象 2、 注册/注销观察者
+
+     获取会话未读数总数，总两种方法：
+     1. 通过接口直接获取：
+
+     int unreadNum = NIMClient.getService(MsgService.class).getTotalUnreadCount();
+     2. 对最近联系人列表中的每个最近联系人的未读数进行求和：
+
+     int unreadNum = 0;
+     for (RecentContact r : items) {
+     unreadNum += r.getUnreadCount();
+     }
+     */
     Observer<List<RecentContact>> messageObserver = new Observer<List<RecentContact>>() {
         @Override
         public void onEvent(List<RecentContact> recentContacts) {
@@ -551,9 +604,14 @@ public class RecentContactsFragment extends TFragment {
         }
     };
 
+    /**
+     * 监听消息发送状态的变化通知
+     */
     Observer<IMMessage> statusObserver = new Observer<IMMessage>() {
         @Override
         public void onEvent(IMMessage message) {
+            // 参数为有状态发生改变的消息对象，其 msgStatus 和 attachStatus 均为最新状态。
+            // 发送消息和接收消息的状态监听均可以通过此接口完成
             int index = getItemIndex(message.getUuid());
             if (index >= 0 && index < items.size()) {
                 RecentContact item = items.get(index);

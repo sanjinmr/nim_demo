@@ -77,6 +77,16 @@ public class SessionListFragment extends MainTabFragment {
         addRecentContactsFragment();
     }
 
+    /**
+     * 观察者接口的方法名都是以 observe 开头，并包含一个 register 参数，
+     * 该值为true时，为注册观察者，为false时，注销观察者。开发者要在不需要观察者时，主动注销，以免造成资源泄露。
+     *
+     * 多端登录
+     登录成功后，可以注册多端登录状态观察者。
+     当有其他端登录或者注销时，会通过此接口通知到UI。登录成功后，如果有其他端登录着（在线），也会发出通知。
+     返回的 OnlineClient 能够获取当前同时在线的客户端类型和操作系统。
+     * @param register
+     */
     private void registerObservers(boolean register) {
         NIMClient.getService(AuthServiceObserver.class).observeOtherClients(clientsObserver, register);
         NIMClient.getService(AuthServiceObserver.class).observeOnlineStatus(userStatusObserver, register);
@@ -126,6 +136,11 @@ public class SessionListFragment extends MainTabFragment {
         }
     };
 
+    /**
+     * 多端登录
+     登录成功后，可以注册多端登录状态观察者。当有其他端登录或者注销时，会通过此接口通知到UI。
+     登录成功后，如果有其他端登录着（在线），也会发出通知。返回的 OnlineClient 能够获取当前同时在线的客户端类型和操作系统。
+     */
     Observer<List<OnlineClient>> clientsObserver = new Observer<List<OnlineClient>>() {
         @Override
         public void onEvent(List<OnlineClient> onlineClients) {

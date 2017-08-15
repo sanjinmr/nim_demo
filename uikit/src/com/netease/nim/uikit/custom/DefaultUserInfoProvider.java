@@ -16,6 +16,7 @@ import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
 
 /**
  * UIKit默认的用户信息提供者
+ * 用户资料提供者, 目前主要用于提供用户资料，用于新消息通知栏中显示消息来源的头像和昵称
  * <p>
  * Created by hzchenkang on 2016/12/19.
  */
