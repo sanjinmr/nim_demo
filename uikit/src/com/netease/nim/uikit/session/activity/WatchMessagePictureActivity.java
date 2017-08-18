@@ -106,6 +106,12 @@ public class WatchMessagePictureActivity extends UI {
     private void queryImageMessages() {
         IMMessage anchor = MessageBuilder.createEmptyMessage(message.getSessionId(), message.getSessionType(), 0);
 
+        // 通过消息类型从本地消息数据库中查询消息历史。
+        // 查询范围由 msgTypeEnum 参数和 anchor 的 sessionId 决定。
+        // 该接口查询方向为从后往前。以锚点 anchor 作为起始点（不包含锚点），往前查询最多 limit 条消息。
+        // @param msgTypeEnum MsgTypeEnum 消息类型
+        // @param anchor IMMessage        搜索的消息锚点
+        // @param limit int               搜索结果的条数限制
         NIMClient.getService(MsgService.class).queryMessageListByType(MsgTypeEnum.image, anchor, Integer.MAX_VALUE).setCallback(new RequestCallback<List<IMMessage>>() {
             @Override
             public void onSuccess(List<IMMessage> param) {

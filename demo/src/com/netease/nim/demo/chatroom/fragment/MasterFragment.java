@@ -81,6 +81,11 @@ public class MasterFragment extends TFragment {
 
     private void fetchRoomInfo() {
         String roomId = ((ChatRoomActivity) getActivity()).getRoomInfo().getRoomId();
+        /**
+         * 获取聊天室基本信息
+
+         此接口可以向服务器获取聊天室信息。SDK 不提供聊天室信息的缓存，开发者可根据需要自己做缓存。聊天室基本信息的扩展字段需要在服务器端设置，客户端 SDK 只提供查询。
+         */
         NIMClient.getService(ChatRoomService.class).fetchRoomInfo(roomId).setCallback(new RequestCallback<ChatRoomInfo>() {
             @Override
             public void onSuccess(ChatRoomInfo param) {

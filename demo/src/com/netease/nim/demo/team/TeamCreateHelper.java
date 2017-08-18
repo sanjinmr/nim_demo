@@ -42,7 +42,17 @@ public class TeamCreateHelper {
         String teamName = "讨论组";
 
         DialogMaker.showProgressDialog(context, context.getString(com.netease.nim.uikit.R.string.empty), true);
-        // 创建群
+        /**
+         * 创建群组
+
+         网易云通信群组分为两类：普通群和高级群，两种群组的消息功能都是相同的，区别在于管理功能。
+         普通群所有人都可以拉人入群，除群主外，其他人都不能踢人；固定群则拥有完善的成员权限体系及管理功能。创建群的接口相同，传入不同的类型参数即可。
+
+         注意：群扩展字段最大长度为1024字节，若超限，服务器将返回414
+
+         创建时可以预设群组的一些相关属性，如果是普通群，仅群名有效。
+         fields 中，key 为数据字段，value 对对应的值，该值类型必须和 field 中定义的 fieldType 一致
+         */
         HashMap<TeamFieldEnum, Serializable> fields = new HashMap<TeamFieldEnum, Serializable>();
         fields.put(TeamFieldEnum.Name, teamName);
         NIMClient.getService(TeamService.class).createTeam(fields, TeamTypeEnum.Normal, "",

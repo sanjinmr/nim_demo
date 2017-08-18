@@ -656,7 +656,11 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
      */
     private void initAudioRecord() {
         if (audioMessageHelper == null) {
-            audioMessageHelper = new AudioRecorder(container.activity, RecordType.AAC, AudioRecorder.DEFAULT_MAX_AUDIO_RECORD_TIME_SECOND, this);
+            audioMessageHelper = new AudioRecorder(
+                    container.activity,
+                    RecordType.AAC, // 录制音频类型（aac/amr)
+                    AudioRecorder.DEFAULT_MAX_AUDIO_RECORD_TIME_SECOND, // 最长录音时长，到该长度后，会自动停止录音, 默认120s
+                    this); // 录音过程回调
         }
     }
 
@@ -678,7 +682,7 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
     private void onEndAudioRecord(boolean cancel) {
         started = false;
         container.activity.getWindow().setFlags(0, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
+        // 结束录音, 正常结束，或者取消录音
         audioMessageHelper.completeRecord(cancel);
         audioRecordBtn.setText(R.string.record_audio);
         audioRecordBtn.setBackgroundResource(R.drawable.nim_message_input_edittext_box);
@@ -737,12 +741,20 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
         time.setBase(SystemClock.elapsedRealtime());
     }
 
-    // 录音状态回调
+    /**
+     * 录音状态回调
+     * 初始化完成回调，提供此接口用于在录音前关闭本地音视频播放（可选）
+     */
     @Override
     public void onRecordReady() {
-
+        // 初始化完成回调，提供此接口用于在录音前关闭本地音视频播放（可选）
     }
 
+    /**
+     * 开始录音回调
+     * @param audioFile
+     * @param recordType
+     */
     @Override
     public void onRecordStart(File audioFile, RecordType recordType) {
         started = true;
@@ -757,12 +769,21 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
         playAudioRecordAnim();
     }
 
+    /**
+     * 录音结束，成功
+     * @param audioFile
+     * @param audioLength
+     * @param recordType
+     */
     @Override
     public void onRecordSuccess(File audioFile, long audioLength, RecordType recordType) {
         IMMessage audioMessage = MessageBuilder.createAudioMessage(container.account, container.sessionType, audioFile, audioLength);
         container.proxy.sendMessage(audioMessage);
     }
 
+    /**
+     * 录音结束，出错
+     */
     @Override
     public void onRecordFail() {
         if (started) {
@@ -770,11 +791,18 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
         }
     }
 
+    /**
+     * 录音结束， 用户主动取消录音
+     */
     @Override
     public void onRecordCancel() {
 
     }
 
+    /**
+     *  到达指定的最长录音时间
+     * @param maxTime
+     */
     @Override
     public void onRecordReachedMaxTime(final int maxTime) {
         stopAudioRecordAnim();

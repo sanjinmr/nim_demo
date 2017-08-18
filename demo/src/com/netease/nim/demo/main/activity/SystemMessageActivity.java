@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 系统消息中心界面
+ * 系统消息中心界面（验证提醒）
  * <p/>
  * Created by huangjun on 2015/3/18.
  */
@@ -261,6 +261,27 @@ public class SystemMessageActivity extends UI implements TAdapterDelegate,
         if (addFriendVerifyFilter(message)) {
             SystemMessage del = null;
             for (SystemMessage m : items) {
+                /**
+                 * 添加好友请求发出后，对方会收到一条 SystemMessage,可以通过 SystemMessageObserver 的observeReceiveSystemMsg 函数来监听系统通知，
+                 * 通过 getAttachObject 函数可以获取添加好友的通知 AddFriendNotify，通知的事件类型见 AddFriendNotify.Event
+                 *
+                 * if (message.getType() == SystemMessageType.AddFriend) {
+                 AddFriendNotify attachData = (AddFriendNotify) message.getAttachObject();
+                 if (attachData != null) {
+                 // 针对不同的事件做处理
+                 if (attachData.getEvent() == AddFriendNotify.Event.RECV_ADD_FRIEND_DIRECT) {
+                 // 对方直接添加你为好友
+                 } else if (attachData.getEvent() == AddFriendNotify.Event.RECV_AGREE_ADD_FRIEND) {
+                 // 对方通过了你的好友验证请求
+                 } else if (attachData.getEvent() == AddFriendNotify.Event.RECV_REJECT_ADD_FRIEND) {
+                 // 对方拒绝了你的好友验证请求
+                 } else if (attachData.getEvent() == AddFriendNotify.Event.RECV_ADD_FRIEND_VERIFY_REQUEST) {
+                 // 对方请求添加好友，一般场景会让用户选择同意或拒绝对方的好友请求。
+                 // 通过message.getContent()获取好友验证请求的附言
+                 }
+                 }
+                 }
+                 */
                 if (m.getFromAccount().equals(message.getFromAccount()) && m.getType() == SystemMessageType.AddFriend) {
                     AddFriendNotify attachData = (AddFriendNotify) m.getAttachObject();
                     if (attachData != null && attachData.getEvent() == AddFriendNotify.Event.RECV_ADD_FRIEND_VERIFY_REQUEST) {
@@ -371,19 +392,44 @@ public class SystemMessageActivity extends UI implements TAdapterDelegate,
             }
         };
         if (message.getType() == SystemMessageType.TeamInvite) {
+            /**
+             * 验证入群邀请
+
+             收到入群邀请后，用户可在系统通知中看到该邀请，并选择接受或拒绝
+             接受邀请后，用户真正入群。如果拒绝邀请，邀请该用户的管理员会收到一条系统通知，类型为 SystemMessageType#DeclineTeamInvite。
+             */
             if (pass) {
+                // 接受邀请
                 NIMClient.getService(TeamService.class).acceptInvite(message.getTargetId(), message.getFromAccount()).setCallback(callback);
             } else {
+                // 拒绝邀请,可带上拒绝理由
                 NIMClient.getService(TeamService.class).declineInvite(message.getTargetId(), message.getFromAccount(), "").setCallback(callback);
             }
 
         } else if (message.getType() == SystemMessageType.ApplyJoinTeam) {
+            /**
+             * 验证入群申请
+
+             用户发出申请后，所有管理员都会收到一条系统通知，类型为 SystemMessageType#TeamApply。管理员可选择同意或拒绝：
+             任意一管理员操作后，其他管理员再操作都会失败。
+
+             如果同意入群申请，群内所有成员(包括申请者)都会收到一条消息类型为 notification 的 IMMessage，附件类型为 MemberChangeAttachment。
+
+             如果拒绝申请，申请者会收到一条系统通知，类型为 SystemMessageType#RejectTeamApply。
+             */
             if (pass) {
+                // 同意申请
                 NIMClient.getService(TeamService.class).passApply(message.getTargetId(), message.getFromAccount()).setCallback(callback);
             } else {
+                // 拒绝申请，可填写理由
                 NIMClient.getService(TeamService.class).rejectApply(message.getTargetId(), message.getFromAccount(), "").setCallback(callback);
             }
         } else if (message.getType() == SystemMessageType.AddFriend) {
+            /**
+             * 通过/拒绝对方好友请求
+             收到好友的验证请求的系统通知后，可以通过或者拒绝，对方会收到一条系统通知，
+             通知的事件类型为 AddFriendNotify.Event.RECV_AGREE_ADD_FRIEND （同意） 或者 AddFriendNotify.Event.RECV_REJECT_ADD_FRIEND（拒绝）
+             */
             NIMClient.getService(FriendService.class).ackAddFriendRequest(message.getFromAccount(), pass).setCallback(callback);
         }
     }
@@ -453,11 +499,23 @@ public class SystemMessageActivity extends UI implements TAdapterDelegate,
         });
     }
 
+    /**
+     * 添加好友请求发出后，对方会收到一条 SystemMessage,可以通过 SystemMessageObserver 的observeReceiveSystemMsg 函数来监听系统通知，
+     * 通过 getAttachObject 函数可以获取添加好友的通知 AddFriendNotify，通知的事件类型见 AddFriendNotify.Event
+     * @param register
+     */
     private void registerSystemObserver(boolean register) {
         NIMClient.getService(SystemMessageObserver.class).observeReceiveSystemMsg(systemMessageObserver, register);
     }
 
+    /**
+     * 监听系统通知
+     */
     Observer<SystemMessage> systemMessageObserver = new Observer<SystemMessage>() {
+        /**
+         * 添加好友请求发出后，对方会收到一条 SystemMessage
+         * @param systemMessage
+         */
         @Override
         public void onEvent(SystemMessage systemMessage) {
             onIncomingMessage(systemMessage);

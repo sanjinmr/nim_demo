@@ -17,11 +17,24 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
+ * 第三方推送自定义接口
+
+ 对于普通的使用场景，上述接口和功能已经可以满足，为了部分特殊场景的扩展性，网易云通信第三方提供了一些扩展接口，开发者可以依靠这些接口实现一些自定义的推送服务。
+
+ 扩展接口由 MixPushMessageHandler 提供
+
+ 第三方推送消息回调接口，用户如果需要自行处理云信的第三方推送消息，则可实现该接口，并注册到NIMPushClient
  * Created by hzchenkang on 2016/11/10.
  */
-
 public class DemoMixPushMessageHandler implements MixPushMessageHandler {
 
+    /**
+     * 第三方推送通知栏点击之后的回调方法，（对于华为推送，这个方法并不能保证一定会回调）
+     *
+     * @param context
+     * @param payload IMessage 中的用户设置的自定义pushPayload {@link com.netease.nimlib.sdk.msg.model.IMMessage}
+     * @return true 表示开发者自行处理第三方推送通知栏点击事件，SDK将不再处理; false 表示仍然使用SDK提供默认的点击后的跳转
+     */
     @Override
     public boolean onNotificationClicked(Context context, Map<String, String> payload) {
 

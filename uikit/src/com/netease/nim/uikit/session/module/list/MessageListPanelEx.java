@@ -348,9 +348,9 @@ public class MessageListPanelEx {
 
     private void registerObservers(boolean register) {
         MsgServiceObserve service = NIMClient.getService(MsgServiceObserve.class);
-        service.observeMsgStatus(messageStatusObserver, register);
-        service.observeAttachmentProgress(attachmentProgressObserver, register);
-        service.observeRevokeMessage(revokeMessageObserver, register);
+        service.observeMsgStatus(messageStatusObserver, register); // 消息状态变化观察者
+        service.observeAttachmentProgress(attachmentProgressObserver, register); //  消息附件上传/下载进度观察者
+        service.observeRevokeMessage(revokeMessageObserver, register); // 监听消息撤回
         if (register) {
             registerUserInfoObserver();
         } else {
@@ -404,7 +404,10 @@ public class MessageListPanelEx {
     };
 
     /**
-     * 消息撤回观察者
+     * 监听消息撤回
+     消息被撤回，会收到消息撤回通知。当开发者收到消息撤回通知，可以在界面上做相应的消息删除等操作。
+
+     添加消息撤回通知的观察者代码如下：
      */
     Observer<IMMessage> revokeMessageObserver = new Observer<IMMessage>() {
         @Override
@@ -997,6 +1000,19 @@ public class MessageListPanelEx {
                         Toast.makeText(container.activity, R.string.network_is_not_available, Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    /**
+                     * 消息撤回
+
+                     发起消息撤回
+                     网易云通信支持发送消息的撤回。超过限定时间（默认时间为2分钟）的撤回会失败，并返回错误码508。
+                     消息撤回后，未读数不发生变化，通知栏提醒的文案变为：撤回了一条消息。
+
+                     几种不能撤回的情况：
+
+                     1、消息为空，不能撤回 2、消息没有发送成功，不能撤回 3、消息发起者不是自己，不能撤回 4、会话 sessionId 是自己，不能撤回
+                     @param message 待撤回的消息
+                     @return InvocationFuture 可设置回调函数，监听发送结果。
+                     */
                     NIMClient.getService(MsgService.class).revokeMessage(item).setCallback(new RequestCallback<Void>() {
                         @Override
                         public void onSuccess(Void param) {
@@ -1091,6 +1107,16 @@ public class MessageListPanelEx {
         refreshMessageList();
     }
 
+    /**
+     * 监听已读回执
+
+     监听到已读回执，根据 IMMessage 中的 isRemoteRead() 方法来判断该条消息是否已读，并刷新界面。
+
+     一般场景：一个会话显示一个已读回执（比该已读回执对应的消息时间早的消息都是已读），
+     那么刷新界面时，可以倒序查找第一条 isRemoteRead 接口返回 true 的消息打上已读回执标记。
+     注意：当删除带有已读回执标记的消息时，也应该刷新界面
+     * @param messages
+     */
     public void updateReceipt(final List<IMMessage> messages) {
         for (int i = messages.size() - 1; i >= 0; i--) {
             if (receiveReceiptCheck(messages.get(i))) {
@@ -1100,6 +1126,17 @@ public class MessageListPanelEx {
         }
     }
 
+    /**
+     * 监听已读回执
+
+     监听到已读回执，根据 IMMessage 中的 isRemoteRead() 方法来判断该条消息是否已读，并刷新界面。
+
+     一般场景：一个会话显示一个已读回执（比该已读回执对应的消息时间早的消息都是已读），
+     那么刷新界面时，可以倒序查找第一条 isRemoteRead 接口返回 true 的消息打上已读回执标记。
+     注意：当删除带有已读回执标记的消息时，也应该刷新界面。
+     * @param msg
+     * @return
+     */
     private boolean receiveReceiptCheck(final IMMessage msg) {
         if (msg != null && msg.getSessionType() == SessionTypeEnum.P2P
                 && msg.getDirect() == MsgDirectionEnum.Out
@@ -1114,8 +1151,17 @@ public class MessageListPanelEx {
 
     /**
      * 发送已读回执（需要过滤）
-     */
+     * 已读回执
 
+     网易云通信提供点对点消息的已读回执。注意：此功能仅对 P2P 消息中有效。
+
+     在会话界面中调用发送已读回执的接口并传入最后一条消息，即表示这之前的消息都已读，对端将收到此回执。
+
+     发送消息已读回执的一般场景：
+
+     进入 P2P 聊天界面（如果没有收到新的消息，反复进入调用发送已读回执接口， SDK 会自动过滤，只会发送一次给网易云通信服务器）。
+     处于聊天界面中，收到当前会话新消息时。
+     */
     public void sendReceipt() {
         if (container.account == null || container.sessionType != SessionTypeEnum.P2P) {
             return;
@@ -1126,6 +1172,11 @@ public class MessageListPanelEx {
             return;
         }
 
+        /**
+         * 发送消息已读回执
+         * @param sessionId 会话ID（聊天对象账号）
+         * @param message 已读的消息(一般是当前接收的最后一条消息）
+         */
         NIMClient.getService(MsgService.class).sendMessageReceipt(container.account, message);
     }
 
@@ -1181,7 +1232,16 @@ public class MessageListPanelEx {
         }
     }
 
-    // 转发消息
+    /**
+     * 转发消息
+
+     网易云通信支持消息转发功能，不支持通知消息和音视频消息以及机器人消息的转发，其他消息类型均支持。
+
+     首先，通过 MessageBuilder 创建一个待转发的消息，参数为想转发的消息，转发目标的聊天对象id，
+     转发目标的会话类型。然后，通过 MsgService#sendMessage 接口，将消息发送出去。
+     * @param sessionId
+     * @param sessionTypeEnum
+     */
     private void doForwardMessage(final String sessionId, SessionTypeEnum sessionTypeEnum) {
         IMMessage message;
         if (forwardMessage.getMsgType() == MsgTypeEnum.robot) {

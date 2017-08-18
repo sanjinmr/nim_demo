@@ -280,6 +280,11 @@ public class NormalTeamInfoActivity extends UI implements OnClickListener, TAdap
                 noticeBtn.setCheck(!checkState);
                 return;
             }
+            /**
+             * 群消息提醒配置（支持漫游）
+             群聊消息提醒可以单独打开或关闭，关闭提醒之后，用户仍然会收到这个群的消息，但是SDK内置的通知栏提醒将不会触发。
+             如果开发者自行实现通知栏提醒，可通过 Team 的 mute 接口获取是否开启消息提醒，并决定是不是要显示通知。 开发者可通过调用以下接口打开或关闭群聊消息提醒：
+             */
             NIMClient.getService(TeamService.class).muteTeam(team.getId(), !checkState).setCallback(new RequestCallback<Void>() {
                 @Override
                 public void onSuccess(Void param) {
@@ -547,6 +552,9 @@ public class NormalTeamInfoActivity extends UI implements OnClickListener, TAdap
 
     /**
      * 移除群成员
+     * 踢人出群
+
+     普通群仅拥有者可以踢人，高级群拥有者和管理员可以踢人，且管理员不能踢拥有者和其他管理员。
      */
     @Override
     public void onRemoveMember(final String account) {
@@ -576,6 +584,10 @@ public class NormalTeamInfoActivity extends UI implements OnClickListener, TAdap
 
     /**
      * 添加群成员
+     * 拉人入群
+
+     普通群所有人都可以拉人入群，SDK 2.4.0之前版本高级群仅管理员和拥有者可以邀请人入群， SDK 2.4.0及以后版本高级群在创建时可以设置群邀请模式，
+     支持仅管理员或者所有人均可拉人入群。
      */
     private void addMembersToTeam(final ArrayList<String> selected) {
         // add members
@@ -583,6 +595,7 @@ public class NormalTeamInfoActivity extends UI implements OnClickListener, TAdap
         NIMClient.getService(TeamService.class).addMembers(teamId, selected).setCallback(new RequestCallback<Void>() {
             @Override
             public void onSuccess(Void param) {
+                // 返回onSuccess，表示拉人不需要对方同意，且对方已经入群成功了
                 DialogMaker.dismissProgressDialog();
                 addMember(selected, false);
                 Toast.makeText(NormalTeamInfoActivity.this, R.string.invite_member_success, Toast.LENGTH_SHORT).show();
@@ -590,6 +603,7 @@ public class NormalTeamInfoActivity extends UI implements OnClickListener, TAdap
 
             @Override
             public void onFailed(int code) {
+                // 返回onFailed，并且返回码为810，表示发出邀请成功了，但是还需要对方同意
                 DialogMaker.dismissProgressDialog();
                 Toast.makeText(NormalTeamInfoActivity.this, R.string.invite_member_failed, Toast.LENGTH_SHORT).show();
             }
@@ -603,6 +617,10 @@ public class NormalTeamInfoActivity extends UI implements OnClickListener, TAdap
 
     /**
      * 非群主退出群
+     * 主动退群
+
+     普通群群主可以退群，若退群，该群没有群主。高级群除群主外，其他用户均可以主动退群：
+     退群后，群内所有成员(包括退出者)会收到一条消息类型为 notification 的 IMMessage，附件类型为 MemberChangeAttachment。
      */
     private void quitTeam() {
         DialogMaker.showProgressDialog(this, getString(R.string.empty), true);

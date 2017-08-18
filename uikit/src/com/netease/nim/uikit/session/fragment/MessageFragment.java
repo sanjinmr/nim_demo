@@ -88,6 +88,7 @@ public class MessageFragment extends TFragment implements ModuleProxy {
     public void onPause() {
         super.onPause();
 
+        // 退出聊天界面或离开最近联系人列表界面，建议放在onPause中
         NIMClient.getService(MsgService.class).setChattingAccount(MsgService.MSG_CHATTING_ACCOUNT_NONE,
                 SessionTypeEnum.None);
         inputPanel.onPause();
@@ -200,6 +201,7 @@ public class MessageFragment extends TFragment implements ModuleProxy {
         MsgServiceObserve service = NIMClient.getService(MsgServiceObserve.class);
         // 添加消息接收观察者，在有新消息到达时，第三方 APP 就可以接收到通知
         service.observeReceiveMessage(incomingMessageObserver, register);
+        // 监听已读回执
         service.observeMessageReceipt(messageReceiptObserver, register);
     }
 
@@ -223,6 +225,9 @@ public class MessageFragment extends TFragment implements ModuleProxy {
         }
     };
 
+    /**
+     * 第三方可以根据已读回执观察者来监听这个消息
+     */
     private Observer<List<MessageReceipt>> messageReceiptObserver = new Observer<List<MessageReceipt>>() {
         @Override
         public void onEvent(List<MessageReceipt> messageReceipts) {
@@ -314,6 +319,13 @@ public class MessageFragment extends TFragment implements ModuleProxy {
         if (customConfig != null) {
             String content = customConfig.getPushContent(message);
             Map<String, Object> payload = customConfig.getPushPayload(message);
+            /**
+             * 针对不同的消息类型，通知栏显示不同的提醒内容。按照以下优先级显示：
+
+             1. 发送方可以设置了推送文案，如果设置，那么通知栏显示该推送文案。
+             2. （ SDK 1.8.0 及以上版本支持）本地定制的通知栏提醒文案，目前支持配置Ticker文案（通知栏弹框条显示内容）和通知内容文案（下拉通知栏显示的通知内容），
+             SDK 会在收到消息时回调 MessageNotifierCustomization 接口， 开发者可以根据昵称和收到的消息（消息类型、会话类型、发送者、消息扩展字段等）来决定要显示的通知内容。
+             */
             message.setPushContent(content);
             message.setPushPayload(payload);
         }

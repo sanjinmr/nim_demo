@@ -428,6 +428,10 @@ public class UserProfileActivity extends UI {
                     });
                 }
             } else if (key.equals(KEY_MSG_NOTICE)) {
+                /**
+                 * 个人消息提醒配置（支持漫游）
+                 支持对用户开启或关闭消息提醒，关闭后，收到该用户发来的消息时，不再进行SDK内置的通知栏消息提醒。
+                 */
                 NIMClient.getService(FriendService.class).setMessageNotify(account, checkState).setCallback(new RequestCallback<Void>() {
                     @Override
                     public void onSuccess(Void param) {
@@ -512,6 +516,11 @@ public class UserProfileActivity extends UI {
         requestDialog.show();
     }
 
+    /**
+     * 添加好友
+     * @param msg
+     * @param addDirectly
+     */
     private void  doAddFriend(String msg, boolean addDirectly) {
         if (!NetworkUtil.isNetAvailable(this)) {
             Toast.makeText(UserProfileActivity.this, R.string.network_is_not_available, Toast.LENGTH_SHORT).show();
@@ -521,6 +530,12 @@ public class UserProfileActivity extends UI {
             Toast.makeText(UserProfileActivity.this, "不能加自己为好友", Toast.LENGTH_SHORT).show();
             return;
         }
+        /**
+         * 好友关系
+
+         添加好友
+         目前添加好友有两种验证类型（见 VerifyType）：直接添加为好友和发起好友验证请求。添加好友时需要构造 AddFriendData，需要填入包括对方帐号，好友验证类型及附言（可选）。代码示例如下：
+         */
         final VerifyType verifyType = addDirectly ? VerifyType.DIRECT_ADD : VerifyType.VERIFY_REQUEST;
         DialogMaker.showProgressDialog(this, "", true);
         NIMClient.getService(FriendService.class).addFriend(new AddFriendData(account, verifyType, msg))
@@ -575,6 +590,10 @@ public class UserProfileActivity extends UI {
                     @Override
                     public void doOkAction() {
                         DialogMaker.showProgressDialog(UserProfileActivity.this, "", true);
+                        /**
+                         * 删除好友
+                         删除好友后，将自动解除双方的好友关系，双方的好友列表中均不存在对方。删除好友后，双方依然可以聊天。
+                         */
                         NIMClient.getService(FriendService.class).deleteFriend(account).setCallback(new RequestCallback<Void>() {
                             @Override
                             public void onSuccess(Void param) {

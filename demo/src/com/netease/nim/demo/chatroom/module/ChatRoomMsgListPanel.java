@@ -206,6 +206,16 @@ public class ChatRoomMsgListPanel {
             }
 
             fetching = true;
+            /**
+             * 获取历史消息,可选择给定时间往前或者往后查询
+             * 以 startTime（单位毫秒） 为时间戳，选择查询方向往前或者往后拉取 limit 条消息。拉取到的消息中也包含成员操作的通知消息。
+             查询结果排序如查询方向有关，若方向往前，则结果排序按时间逆序，反之则结果排序按时间顺序。
+             * @param roomId    聊天室id
+             * @param startTime 时间戳，单位毫秒
+             * @param limit     可拉取的消息数量
+             * @param direction 查询方向
+             * @return InvocationFuture 可以设置回调函数。回调中返回历史消息列表
+             */
             NIMClient.getService(ChatRoomService.class).pullMessageHistoryEx(container.account, anchor().getTime(), LOAD_MESSAGE_COUNT, QueryDirectionEnum.QUERY_OLD)
                     .setCallback(callback);
         }

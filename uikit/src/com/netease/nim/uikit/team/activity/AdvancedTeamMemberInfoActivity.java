@@ -210,6 +210,16 @@ public class AdvancedTeamMemberInfoActivity extends UI implements View.OnClickLi
             updateStateMap(checkState, key);
 
             if (key.equals(KEY_MUTE_MSG)) {
+                /**
+                 * 群成员禁言
+                 * 群组支持管理员对普通成员的禁言、解除禁言操作。
+                 * 禁言、解除禁言
+                 *
+                 * @param teamId  群组ID
+                 * @param account 被禁言、被解除禁言的账号
+                 * @param mute    true表示禁言，false表示解除禁言
+                 * @return InvocationFuture 可以设置回调函数，监听操作结果
+                 */
                 NIMClient.getService(TeamService.class).muteTeamMember(teamId, account, checkState).setCallback(new RequestCallback<Void>() {
                     @Override
                     public void onSuccess(Void param) {
@@ -467,12 +477,21 @@ public class AdvancedTeamMemberInfoActivity extends UI implements View.OnClickLi
     }
 
     /**
+     * 管理群组权限
+     * 高级群中，拥有者可以增加和删除管理员。
+     *
      * 添加管理员权限
      */
     private void addManagers() {
         DialogMaker.showProgressDialog(this, getString(R.string.empty));
         ArrayList<String> accountList = new ArrayList<>();
         accountList.add(account);
+        /**
+         * 拥有者添加管理员
+         * @param teamId 群 ID
+         * @param accounts 待提升为管理员的用户帐号列表
+         * @return InvocationFuture 可以设置回调函数,如果成功，参数为新增的群管理员列表
+         */
         NIMClient.getService(TeamService.class).addManagers(teamId, accountList).setCallback(new RequestCallback<List<TeamMember>>() {
             @Override
             public void onSuccess(List<TeamMember> managers) {
@@ -504,6 +523,12 @@ public class AdvancedTeamMemberInfoActivity extends UI implements View.OnClickLi
         DialogMaker.showProgressDialog(this, getString(R.string.empty));
         ArrayList<String> accountList = new ArrayList<>();
         accountList.add(account);
+        /**
+         * 拥有者撤销管理员权限 <br>
+         * @param teamId 群ID
+         * @param managers 待撤销的管理员的帐号列表
+         * @return InvocationFuture 可以设置回调函数，如果成功，参数为被撤销的群成员列表(权限已被降为Normal)。
+         */
         NIMClient.getService(TeamService.class).removeManagers(teamId, accountList).setCallback(new RequestCallback<List<TeamMember>>() {
             @Override
             public void onSuccess(List<TeamMember> members) {

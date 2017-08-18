@@ -131,6 +131,7 @@ abstract public class BaseAudioControl<T> {
 		state = AudioControllerState.stop;
 		
 		currentPlayable = playable;
+		// 构造播放器对象
 		currentAudioPlayer = new AudioPlayer(mContext);
         currentAudioPlayer.setDataSource(filePath);
 
@@ -159,7 +160,10 @@ abstract public class BaseAudioControl<T> {
 				LogUtil.audio("playRunnable run when currentAudioPlayer == null");
 				return;
 			}
-			
+			// 开始播放。需要传入一个 Stream Type 参数，表示是用听筒播放还是扬声器。取值可参见
+			// android.media.AudioManager#STREAM_***
+			// AudioManager.STREAM_VOICE_CALL 表示使用听筒模式
+			// AudioManager.STREAM_MUSIC 表示使用扬声器模式
 			currentAudioPlayer.start(currentAudioStreamType);
 		}
 	};
@@ -200,6 +204,7 @@ abstract public class BaseAudioControl<T> {
 	public void stopAudio() {
         if (state == AudioControllerState.playing) {
             //playing->stop
+			// 主动停止播放
             currentAudioPlayer.stop();
         } else if (state == AudioControllerState.ready) {
             //ready->cancel
@@ -248,7 +253,15 @@ abstract public class BaseAudioControl<T> {
 			currentAudioStreamType = origAudioStreamType;
 		}	
 	}
-	
+
+	/**
+	 * 回放
+	 网易云通信的语音消息格式有 aac 和 amr 两种格式可选，由于 2.x 系统的原生 MediaPlayer 不支持 aac 格式，
+	 因此 SDK 也提供了一个 AudioPlayer 来播放网易云通信的语音消息。
+	 同时，将 MediaPlayer 的接口进行了一些封装，使得在会话场景下播放语音更加方便。 使用示例代码如下
+
+	 定义一个播放进程回调类
+	 */
 	public class BasePlayerListener implements OnPlayListener {
 		protected AudioPlayer listenerPlayingAudioPlayer;
 		protected Playable listenerPlayingPlayable;
@@ -270,7 +283,10 @@ abstract public class BaseAudioControl<T> {
 			
 			return true;
 		}
-		
+
+		/**
+		 * 音频转码解码完成，会马上开始播放了
+		 */
 		@Override
 		public void onPrepared() {
 			if (!checkAudioPlayerValid()) {
@@ -280,10 +296,16 @@ abstract public class BaseAudioControl<T> {
             state = AudioControllerState.playing;
 			if (needSeek) {
 				needSeek = false;
+				// 如果中途切换播放设备，重新调用 start，传入指定的 streamType 即可。player 会自动停止播放，然后再以新的 streamType 重新开始播放。
+				// 如果需要从中断的地方继续播放，需要外面自己记住已经播放过的位置，然后在 onPrepared 回调中调用 seekTo
 				listenerPlayingAudioPlayer.seekTo((int) seekPosition);
 			}
 		}
 
+		/**
+		 * 播放进度报告，每隔 500ms 会回调一次，告诉当前进度。 参数为当前进度，单位为毫秒，可用于更新 UI
+		 * @param curPosition
+         */
 		@Override
 		public void onPlaying(long curPosition) {
 			if (!checkAudioPlayerValid()) {
@@ -295,6 +317,9 @@ abstract public class BaseAudioControl<T> {
 			}
 		}
 
+		/**
+		 * 播放被中断了
+		 */
 		@Override
 		public void onInterrupt() {
 			if (!checkAudioPlayerValid()) {
@@ -308,6 +333,10 @@ abstract public class BaseAudioControl<T> {
 
 		}
 
+		/**
+		 * 播放过程中出错。参数为出错原因描述
+		 * @param error
+         */
 		@Override
 		public void onError(String error) {
 			if (!checkAudioPlayerValid()) {
@@ -320,6 +349,9 @@ abstract public class BaseAudioControl<T> {
             }
 		}
 
+		/**
+		 * 播放结束
+		 */
 		@Override
 		public void onCompletion() {
 			if (!checkAudioPlayerValid()) {

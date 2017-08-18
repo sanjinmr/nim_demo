@@ -109,6 +109,7 @@ public class AdvancedTeamJoinActivity extends UI implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (team != null) {
+            // 加入群组
             NIMClient.getService(TeamService.class).applyJoinTeam(team.getId(), null).setCallback(new RequestCallback<Team>() {
                 @Override
                 public void onSuccess(Team team) {

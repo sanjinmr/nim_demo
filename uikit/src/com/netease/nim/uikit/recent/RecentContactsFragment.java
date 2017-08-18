@@ -457,7 +457,7 @@ public class RecentContactsFragment extends TFragment {
         //  注册/注销观察者
         service.observeRecentContact(messageObserver, register); // 监听最近会话变更
         service.observeMsgStatus(statusObserver, register); // 监听消息发送状态的变化通知
-        service.observeRecentContactDeleted(deleteObserver, register);
+        service.observeRecentContactDeleted(deleteObserver, register); // 监听清空最近联系人
 
         registerTeamUpdateObserver(register);
         registerTeamMemberUpdateObserver(register);
@@ -621,6 +621,14 @@ public class RecentContactsFragment extends TFragment {
         }
     };
 
+    /**
+     *
+     * 清空本地所有消息记录
+
+     网易云通信支持清空本地数据库中的所有消息记录。
+     在清空数据记录的同时，可选择是否要同时清空最近联系人列表数据库。
+     若最近联系人列表也被清空，会触发MsgServiceObserve#observeRecentContactDeleted(Observer, boolean)通知
+     */
     Observer<RecentContact> deleteObserver = new Observer<RecentContact>() {
         @Override
         public void onEvent(RecentContact recentContact) {
@@ -741,6 +749,7 @@ public class RecentContactsFragment extends TFragment {
         List<String> uuid = new ArrayList<>(1);
         uuid.add(recentContact.getRecentMessageId());
 
+        // 通过uuid批量获取IMMessage(同步版本)
         List<IMMessage> messages = NIMClient.getService(MsgService.class).queryMessageListByUuidBlock(uuid);
 
         if (messages == null || messages.size() < 1) {
@@ -748,7 +757,14 @@ public class RecentContactsFragment extends TFragment {
         }
         final IMMessage anchor = messages.get(0);
 
-        // 查未读消息
+        /**
+         * 查未读消息
+         * @param anchor IMMessage 查询锚点；当进行首次查询时，锚点可以用使用 MessageBuilder#createEmptyMessage 接口生成。查询结果不包含锚点。
+         * @param direction QueryDirectionEnum 查询方向
+         * @param limit int 查询结果的条数限制
+         * @param asc boolean 查询结果的排序规则，如果为 true，结果按照时间升级排列，如果为 false，按照时间降序排列
+         * @return 调用跟踪，可设置回调函数，接收查询结果
+         */
         NIMClient.getService(MsgService.class).queryMessageListEx(anchor, QueryDirectionEnum.QUERY_OLD,
                 recentContact.getUnreadCount() - 1, false).setCallback(new RequestCallbackWrapper<List<IMMessage>>() {
 

@@ -92,6 +92,14 @@ public class ChatRoomMemberCache {
         // fetch
         List<String> accounts = new ArrayList<>(1);
         accounts.add(account);
+        /**
+         * 根据用户id获取聊天室成员信息
+         * 批量获取成员信息
+         通过用户 id 批量获取指定成员在聊天室中的信息。
+         * @param roomId   聊天室id
+         * @param accounts 成员帐号列表
+         * @return InvocationFuture 可以设置回调函数。回调中返回成员信息列表
+         */
         NIMClient.getService(ChatRoomService.class).fetchRoomMembersByIds(roomId, accounts).setCallback(new RequestCallbackWrapper<List<ChatRoomMember>>() {
             @Override
             public void onResult(int code, List<ChatRoomMember> members, Throwable exception) {
@@ -126,7 +134,22 @@ public class ChatRoomMemberCache {
             callback.onResult(false, null);
             return;
         }
+        /**
+         * 获取聊天室成员信息
+         * 获取成员信息
+         该接口可以获取固定成员信息、仅在线的固定成员信息及游客信息 ChatRoomMember，其中的扩展字段由该用户进入聊天室时填写。
 
+         固定成员有四种类型，分别是创建者,管理员,普通用户,受限用户。禁言用户和黑名单用户都属于受限用户。
+
+         拉取固定成员时，无论成员在线不在线，都会返回。拉取游客时，只返回在线的成员。
+         * @param roomId          聊天室id
+         * @param memberQueryType 成员查询类型。见{@link MemberQueryType}
+         * @param time            查询固定成员列表用ChatRoomMember.getUpdateTime,
+         *                        查询游客列表用ChatRoomMember.getEnterTime，
+         *                        填0会使用当前服务器最新时间开始查询，即第一页，单位毫秒
+         * @param limit           条数限制
+         * @return InvocationFuture 可以设置回调函数。回调中返回成员信息列表
+         */
         NIMClient.getService(ChatRoomService.class).fetchRoomMembers(roomId, memberQueryType, time, limit).setCallback(new RequestCallbackWrapper<List<ChatRoomMember>>() {
             @Override
             public void onResult(int code, List<ChatRoomMember> result, Throwable exception) {

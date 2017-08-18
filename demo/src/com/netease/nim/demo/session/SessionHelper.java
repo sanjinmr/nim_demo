@@ -498,10 +498,17 @@ public class SessionHelper {
         });
     }
 
+    /**
+     * 监听消息撤回
+     消息被撤回，会收到消息撤回通知。当开发者收到消息撤回通知，可以在界面上做相应的消息删除等操作。
+
+     添加消息撤回通知的观察者代码如下：
+     */
     private static void registerMsgRevokeObserver() {
         NIMClient.getService(MsgServiceObserve.class).observeRevokeMessage(new Observer<IMMessage>() {
             @Override
             public void onEvent(IMMessage message) {
+                // 执行消息撤回后的界面操作
                 if (message == null) {
                     return;
                 }

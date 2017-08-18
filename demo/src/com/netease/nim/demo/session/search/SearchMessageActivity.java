@@ -214,6 +214,14 @@ public class SearchMessageActivity extends UI {
         String query = keyword.toLowerCase();
         IMMessage anchor = (append ? searchResultList.get(searchResultList.size() - 1) : emptyMsg);
 
+        /**
+         * @param keyword String 文本消息的搜索关键字
+         * @param fromAccounts List<String> 消息说话者帐号列表，如果消息说话在该列表中，
+         * 那么无需匹配 keyword，对应的消息记录会直接加入搜索结果中。
+         * @param anchor IMMessage 搜索的消息锚点
+         * @param limit int 搜索结果的条数限制
+         * @return 调用跟踪，可设置回调函数，接收查询结果
+         */
         NIMClient.getService(MsgService.class).searchMessageHistory(keyword, filterAccounts(query), anchor, SEARCH_COUNT)
                 .setCallback(new RequestCallbackWrapper<List<IMMessage>>() {
                     @Override

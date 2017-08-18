@@ -59,7 +59,11 @@ public class FriendDataCache {
             friendMap.put(f.getAccount(), f);
         }
 
-        // 获取我所有好友的帐号
+        /**
+         * 获取我所有好友的帐号
+         * 构建通讯录
+         如果使用网易云通信用户关系、用户资料托管，构建通讯录，先获取我所有好友帐号，再根据帐号去获取对应的用户资料，代码示例如下:
+         */
         List<String> accounts = NIMClient.getService(FriendService.class).getFriendAccounts();
         if (accounts == null || accounts.isEmpty()) {
             return;

@@ -81,6 +81,13 @@ public class ChatRoomFragment extends ChatRoomTabFragment implements ViewPager.O
         backImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /**
+                 * 离开聊天室
+
+                 离开聊天室，会断开聊天室对应的链接，并不再收到该聊天室的任何消息。如果用户要离开聊天室，可以手动调用离开聊天室接口，该接口没有回调。
+
+                 如果聊天室被解散，会收到被踢出的通知。
+                 */
                 NIMClient.getService(ChatRoomService.class).exitChatRoom(((ChatRoomActivity) getActivity()).getRoomInfo().getRoomId());
                 ((ChatRoomActivity) getActivity()).clearChatRoom();
             }

@@ -66,6 +66,11 @@ public class AdvancedTeamSearchActivity extends UI {
     }
 
     private void queryTeamById() {
+        /**
+         * 查询高级群资料
+
+         除了管理员邀请，用户也可以主动申请加入高级群。用户可以通过群号查询高级群信息：
+         */
         NIMClient.getService(TeamService.class).searchTeam(searchEditText.getText().toString()).setCallback(new RequestCallback<Team>() {
             @Override
             public void onSuccess(Team team) {

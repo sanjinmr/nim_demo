@@ -828,18 +828,21 @@ public class AdvancedTeamInfoActivity extends UI implements
 
     /**
      * 邀请群成员
-     *
+     *普通群所有人都可以拉人入群，SDK 2.4.0之前版本高级群仅管理员和拥有者可以邀请人入群， S
+     * DK 2.4.0及以后版本高级群在创建时可以设置群邀请模式，支持仅管理员或者所有人均可拉人入群。
      * @param accounts 邀请帐号
      */
     private void inviteMembers(ArrayList<String> accounts) {
         NIMClient.getService(TeamService.class).addMembers(teamId, accounts).setCallback(new RequestCallback<Void>() {
             @Override
             public void onSuccess(Void param) {
+                // 返回onSuccess，表示拉人不需要对方同意，且对方已经入群成功了
                 Toast.makeText(AdvancedTeamInfoActivity.this, "添加群成员成功", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailed(int code) {
+                // 返回onFailed，并且返回码为810，表示发出邀请成功了，但是还需要对方同意
                 if (code == ResponseCode.RES_TEAM_INVITE_SUCCESS) {
                     Toast.makeText(AdvancedTeamInfoActivity.this, R.string.team_invite_members_success, Toast.LENGTH_SHORT).show();
                 } else {
@@ -870,6 +873,17 @@ public class AdvancedTeamInfoActivity extends UI implements
             Toast.makeText(AdvancedTeamInfoActivity.this, "该成员已被禁言，请先取消禁言", Toast.LENGTH_LONG).show();
             return;
         }
+
+        /**
+         * 拥有者将群的拥有者权限转给另外一个人，转移后，另外一个人成为拥有者。
+         *     原拥有者变成普通成员。若参数quit为true，原拥有者直接退出该群。
+         * @param teamId 群ID
+         * @param account 新任拥有者的用户帐号
+         * @param quit 转移时是否要同时退出该群
+         * @return InvocationFuture 可以设置回调函数，如果成功，视参数 quit 值：
+         *     quit为false：参数仅包含原拥有着和当前拥有者的(即操作者和 account)，权限已被更新。
+         *     quit为true: 参数为空。
+         */
         NIMClient.getService(TeamService.class).transferTeam(teamId, account, false)
                 .setCallback(new RequestCallback<List<TeamMember>>() {
                     @Override
@@ -924,6 +938,11 @@ public class AdvancedTeamInfoActivity extends UI implements
      */
     private void dismissTeam() {
         DialogMaker.showProgressDialog(this, getString(R.string.empty), true);
+        /**
+         * 解散群组
+
+         高级群的群主可以解散群：
+         */
         NIMClient.getService(TeamService.class).dismissTeam(teamId).setCallback(new RequestCallback<Void>() {
             @Override
             public void onSuccess(Void param) {
@@ -1375,7 +1394,9 @@ public class AdvancedTeamInfoActivity extends UI implements
             public void onResult(int code, String url, Throwable exception) {
                 if (code == ResponseCode.RES_SUCCESS && !TextUtils.isEmpty(url)) {
                     LogUtil.i(TAG, "upload icon success, url =" + url);
-
+                    // 更新群头像请注意: 需要先调用 NosService#upload 方法，将头像图片成功上传到 nos。再将 nos 的 url 地址更新到群资料。
+                    // 每次仅修改群的一个属性，可修改的属性包括：群名，介绍，公告，验证类型等。
+                    // 当然，SDK 也支持批量更新群组资料，可一次性更新多个字段的值，见 TeamService#updateTeamFields
                     NIMClient.getService(TeamService.class).updateTeam(teamId, TeamFieldEnum.ICON, url).setCallback(new RequestCallback<Void>() {
                         @Override
                         public void onSuccess(Void param) {

@@ -324,6 +324,11 @@ public class LoginActivity extends UI implements OnKeyListener {
         });
     }
 
+    /**
+     * 内置消息提醒定制
+
+     网易云通信 SDK 提供内置的消息提醒（通知栏提醒）功能，并提供以下四个维度的定制，开启/关闭内置的消息提醒、更新消息提醒配置接口如下：
+     */
     private void initNotificationConfig() {
         // 初始化消息提醒
         NIMClient.toggleNotification(UserPreferences.getNotificationToggle());
@@ -335,6 +340,7 @@ public class LoginActivity extends UI implements OnKeyListener {
             UserPreferences.setStatusConfig(statusBarNotificationConfig);
         }
         // 更新配置
+        // 更新消息提醒配置 StatusBarNotificationConfig
         NIMClient.updateStatusBarNotificationConfig(statusBarNotificationConfig);
     }
 

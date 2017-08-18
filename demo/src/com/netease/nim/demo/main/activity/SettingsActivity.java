@@ -175,6 +175,7 @@ public class SettingsActivity extends UI implements SettingsAdapter.SwitchChange
         disturbItem = new SettingTemplate(TAG_NO_DISTURBE, getString(R.string.no_disturb), noDisturbTime);
         items.add(disturbItem);
         items.add(SettingTemplate.addLine());
+        // 支持查询当前配置的推送状态。true 桌面端在线时移动端不需推送；false 桌面端在线时移动端需推送
         items.add(new SettingTemplate(TAG_MULTIPORT_PUSH, getString(R.string.multiport_push), SettingType.TYPE_TOGGLE,
                 !NIMClient.getService(SettingsService.class).isMultiportPushOpen()));
 
@@ -230,6 +231,14 @@ public class SettingsActivity extends UI implements SettingsAdapter.SwitchChange
                 startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
                 break;
             case TAG_CLEAR:
+                /**
+                 * 清空本地所有消息记录
+
+                 网易云通信支持清空本地数据库中的所有消息记录。
+                 在清空数据记录的同时，可选择是否要同时清空最近联系人列表数据库。
+                 若最近联系人列表也被清空，会触发MsgServiceObserve#observeRecentContactDeleted(Observer, boolean)通知
+                 @param clearRecent 若为true，将同时清空最近联系人列表数据
+                 */
                 NIMClient.getService(MsgService.class).clearMsgDatabase(true);
                 Toast.makeText(SettingsActivity.this, R.string.clear_msg_history_success, Toast.LENGTH_SHORT).show();
                 break;
@@ -350,9 +359,13 @@ public class SettingsActivity extends UI implements SettingsAdapter.SwitchChange
     }
 
     private void setMessageNotify(final boolean checkState) {
+        // 开启/关闭第三方推送服务
         // 如果接入第三方推送（小米），则同样应该设置开、关推送提醒
         // 如果关闭消息提醒，则第三方推送消息提醒也应该关闭。
         // 如果打开消息提醒，则同时打开第三方推送消息提醒。
+        // @param enable true 开启，SDK 需要与网易云通信服务器做确认；false 关闭，SDK 也需要通知网易云通信服务器。
+        // @return InvocationFuture 可以设置回调函数。只有与服务器交互完成后才算成功，如果出错，会有具体的错误代码。
+        // 在关闭、开启消息提醒的时候，可以调用该接口关闭推送。
         NIMClient.getService(MixPushService.class).enable(checkState).setCallback(new RequestCallback<Void>() {
             @Override
             public void onSuccess(Void param) {
@@ -411,6 +424,11 @@ public class SettingsActivity extends UI implements SettingsAdapter.SwitchChange
     }
 
     private void updateMultiportPushConfig(final boolean checkState) {
+        /**
+         * 设置桌面端(PC/Mac/WEB)在线时，移动端是否需要推送
+         * @param checkState true 桌面端在线时移动端不需推送；false 桌面端在线时移动端需推送
+         * @return InvocationFuture 可以设置回调函数。成功会返回成功信息，错误会返回相应的错误码。
+         */
         NIMClient.getService(SettingsService.class).updateMultiportPushConfig(checkState).setCallback(new RequestCallback<Void>() {
             @Override
             public void onSuccess(Void param) {

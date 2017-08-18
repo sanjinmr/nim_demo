@@ -38,6 +38,11 @@ public class NimUserInfoCache {
 
     /**
      * 构建缓存与清理
+     * 从本地数据库中获取所有用户资料
+     获取本地数据库中所有的用户资料，一般适合在登录后构建用户资料缓存时使用，代码示例如下：
+     List<NimUserInfo> users = NIMClient.getService(UserService.class).getUserInfoList(accounts);
+     通过用户账号，从本地数据库获取用户资料。代码示例如下：
+     NimUserInfo user = NIMClient.getService(UserService.class).getUserInfo(account);
      */
     public void buildCache() {
         List<NimUserInfo> users = NIMClient.getService(UserService.class).getAllUserInfo();
@@ -73,6 +78,13 @@ public class NimUserInfoCache {
         List<String> accounts = new ArrayList<>(1);
         accounts.add(account);
 
+        /**
+         * 获取服务器用户资料
+
+         从服务器获取用户资料，一般在本地用户资料不存在时调用，获取后 SDK 会负责更新本地数据库。代码示例如下：
+
+         此接口可以批量从服务器获取用户资料，从用户体验和流量成本考虑，不建议应用频繁调用此接口。对于用户数据实时性要求不高的页面，应尽量调用读取本地缓存接口。
+         */
         NIMClient.getService(UserService.class).fetchUserInfo(accounts).setCallback(new RequestCallbackWrapper<List<NimUserInfo>>() {
 
             @Override
@@ -240,11 +252,30 @@ public class NimUserInfoCache {
 
     /**
      * 在Application的onCreate中向SDK注册用户资料变更观察者
+     *
+     * 监听用户资料变更
+     用户资料除自己之外，不保证其他用户资料实时更新。其他用户数据更新时机为：
+
+     调用 fetchUserInfo 方法刷新用户
+     收到此用户发来消息（如果消息发送者有资料变更，SDK 会负责更新并通知）
+     程序再次启动，此时会同步好友信息
+     由于用户资料变更需要跨进程异步调用，开发者最好能在第三方 APP 中做好用户资料缓存，
+     查询用户资料时都从本地缓存中访问。在用户资料有变化时，SDK 会告诉注册的观察者，此时，第三方 APP 可更新缓存，并刷新界面。 代码示例如下：
      */
     public void registerObservers(boolean register) {
         NIMClient.getService(UserServiceObserve.class).observeUserInfoUpdate(userInfoUpdateObserver, register);
     }
 
+    /**
+     * 监听用户资料变更
+     用户资料除自己之外，不保证其他用户资料实时更新。其他用户数据更新时机为：
+
+     调用 fetchUserInfo 方法刷新用户
+     收到此用户发来消息（如果消息发送者有资料变更，SDK 会负责更新并通知）
+     程序再次启动，此时会同步好友信息
+     由于用户资料变更需要跨进程异步调用，开发者最好能在第三方 APP 中做好用户资料缓存，查询用户资料时都从本地缓存中访问。
+     在用户资料有变化时，SDK 会告诉注册的观察者，此时，第三方 APP 可更新缓存，并刷新界面。 代码示例如下：
+     */
     private Observer<List<NimUserInfo>> userInfoUpdateObserver = new Observer<List<NimUserInfo>>() {
         @Override
         public void onEvent(List<NimUserInfo> users) {

@@ -136,6 +136,16 @@ public class MainActivity extends UI {
         boolean isNoDisbConfigExist = NIMClient.getService(MixPushService.class).isPushNoDisturbConfigExist();
 
         if (!isNoDisbConfigExist && staConfig.downTimeToggle) {
+            /**
+             * 设置推送免打扰时间，时间参数为北京时间的24小时计数 HH:mm，该时间段将不再向用户推送消息
+             * SDK 3.2.0 版本以前的用户，为了将用户设置的免打扰配置与push免打扰同步，应该在监听到登陆同步完成后，
+             * 调用 setPushNoDisturbConfig 方法。如果开发者不使用新版第三方推送功能，只要不调用该方法，则旧的功能不受影响。
+             * 此外，在免打扰设置界面也应该做到同时设置push免打扰
+             * @param isOpen 是否开启
+             * @param startTime 开始时间 格式 HH:mm
+             * @param stopTime 结束时间 格式 HH:mm
+             * @return InvocationFuture 可以设置回调函数。成功会返回成功信息，错误会返回相应的错误码。
+             */
             NIMClient.getService(MixPushService.class).setPushNoDisturbConfig(staConfig.downTimeToggle,
                     staConfig.downTimeBegin, staConfig.downTimeEnd);
         }

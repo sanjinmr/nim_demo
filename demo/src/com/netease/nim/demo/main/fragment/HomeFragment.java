@@ -180,6 +180,35 @@ public class HomeFragment extends TFragment implements OnPageChangeListener, Rem
         tabs.setOnTabDoubleTapListener(adapter);
     }
 
+    /**
+     * 消息提醒
+     集成网易云通信 Android SDK 的 APP 运行起来时，会有个后台进程（push 进程），该进程保持了与网易云通信 Server 的长连接。
+     只要这个 push 进程活着（网易云通信提供安卓保活机制），就能接收网易云通信 Server 推过来的消息，进行通知栏提醒。
+
+     消息提醒场景
+
+     需要消息提醒的场景：
+     1. APP 在后台时。
+
+     2. 在前台与 A 聊天但收到非 A 的消息时（与 iOS 不一样）。
+
+     3. 在非聊天界面且非最近会话界面时。
+
+     不需要消息提醒的场景：
+     1. 如果用户正在与某一个人聊天，当这个人的消息到达时，是不应该有通知栏提醒的。
+
+     2. 如果用户停留在最近联系人列表界面，收到消息也不应该有通知栏提醒（但会有未读数变更通知）。
+
+     网易云通信 SDK 提供内置的消息提醒功能，如需使用，开发者需要在进出聊天界面以及最近联系人列表界面时，通知 SDK。相关接口如下：
+
+     // 进入聊天界面，建议放在onResume中
+     NIMClient.getService(MsgService.class).setChattingAccount(account， sessionType);
+     // 进入最近联系人列表界面，建议放在onResume中
+     NIMClient.getService(MsgService.class).setChattingAccount(MsgService.MSG_CHATTING_ACCOUNT_ALL, SessionTypeEnum.None);
+     // 退出聊天界面或离开最近联系人列表界面，建议放在onPause中
+     NIMClient.getService(MsgService.class).setChattingAccount(MsgService.MSG_CHATTING_ACCOUNT_NONE, SessionTypeEnum.None);
+     * @param enable
+     */
     private void enableMsgNotification(boolean enable) {
         boolean msg = (pager.getCurrentItem() != MainTab.RECENT_CONTACTS.tabIndex);
         if (enable | msg) {

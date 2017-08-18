@@ -497,7 +497,15 @@ public class OnlinePeopleFragment extends TFragment {
         });
     }
 
-    // 踢人
+    /**
+     * 踢出聊天室
+     踢出成员。仅管理员可以踢；如目标是管理员仅创建者可以踢。
+
+     可以添加被踢通知扩展字段，这个字段会放到被踢通知的扩展字段中。通知扩展字段最长1K；扩展字段需要传入 Map， SDK 会负责转成Json String。
+
+     当有人被踢出聊天室时，会收到类型为 ChatRoomMemberKicked 的聊天室通知消息
+     * @param chatRoomMember
+     */
     private void kickMember(final ChatRoomMember chatRoomMember) {
         Map<String, Object> reason = new HashMap<>();
         reason.put("reason", "就是不爽！");
@@ -532,9 +540,22 @@ public class OnlinePeopleFragment extends TFragment {
         });
     }
 
-    // 设置/取消禁言
+    /**
+     * 禁言
+     添加到禁言名单时, 会收到类型为 ChatRoomMemberMuteAdd 的聊天室通知消息。
+     取消禁言时, 会收到类型为 ChatRoomMemberMuteRemove 的聊天室通知消息。
+     取消禁言之后，恢复为原来的身份。原来是游客，取消禁言后，变为游客。原来是普通成员，取消禁言后，变为普通成员。
+     * @param chatRoomMember
+     */
     private void setMuted(final ChatRoomMember chatRoomMember) {
         MemberOption option = new MemberOption(roomId, chatRoomMember.getAccount());
+        /**
+         * 添加到禁言名单/取消禁言
+         *
+         * @param isAdd        true:添加, false:取消
+         * @param memberOption 请求参数，包含聊天室id，帐号id以及可选的扩展字段
+         * @return InvocationFuture 可以设置回调函数。回调中返回成员信息
+         */
         NIMClient.getService(ChatRoomService.class).markChatRoomMutedList(!chatRoomMember.isMuted(), option)
                 .setCallback(new RequestCallback<ChatRoomMember>() {
                     @Override
@@ -555,7 +576,13 @@ public class OnlinePeopleFragment extends TFragment {
                 });
     }
 
-    // 设置/移出黑名单
+    /**
+     * 成员操作
+     拉黑
+     加入黑名单时，会收到类型为 ChatRoomMemberBlackAdd 聊天室通知消息。
+     移出黑名单时，会收到类型为 ChatRoomMemberBlackRemove 的聊天室通知消息。
+     * @param chatRoomMember
+     */
     private void setBlackList(ChatRoomMember chatRoomMember) {
         MemberOption option = new MemberOption(roomId, chatRoomMember.getAccount());
         NIMClient.getService(ChatRoomService.class).markChatRoomBlackList(!chatRoomMember.isInBlackList(), option)
@@ -577,8 +604,23 @@ public class OnlinePeopleFragment extends TFragment {
                 });
     }
 
-    // 设置/取消管理员
+    /**
+     * 设置管理员
+     设为管理员时, 会收到类型为 ChatRoomManagerAdd 的聊天室通知消息。
+     取消管理员时, 会收到类型为 ChatRoomManagerRemove 的聊天室通知消息。
+     如果游客被设为管理员，再被取消管理员，该成员不在变为游客，而成为普通成员。
+     * @param member
+     * @param isAdmin
+     */
     private void setAdmin(final ChatRoomMember member, boolean isAdmin) {
+        /**
+         * 设为管理员/取消管理员
+         *
+         * @param isAdd        true:设为, false:取消
+         * @param memberOption 请求参数，包含聊天室id，帐号id以及可选的扩展字段
+         * @return InvocationFuture 可以设置回调函数。回调中返回成员信息
+         *
+         */
         NIMClient.getService(ChatRoomService.class)
                 .markChatRoomManager(!isAdmin, new MemberOption(roomId, member.getAccount()))
                 .setCallback(new RequestCallback<ChatRoomMember>() {
@@ -600,8 +642,22 @@ public class OnlinePeopleFragment extends TFragment {
                 });
     }
 
-    // 设置/取消普通成员
+    /**
+     * 设置普通成员
+     即将游客变为固定成员中的普通成员身份。
+
+     设为普通成员时, 会收到类型为 ChatRoomCommonAdd 的聊天室通知消息。
+     移除普通成员时, 会收到类型为 ChatRoomCommonRemove 的聊天室通知消息。
+     * @param member
+     * @param isNormal
+     */
     private void setNormalMember(final ChatRoomMember member, boolean isNormal) {
+        /**
+         * 设为/取消聊天室普通成员
+         * @param isAdd         true:设为, false:取消
+         * @param memberOption  请求参数，包含聊天室id，帐号id以及可选的扩展字段
+         * @return InvocationFuture 可以设置回调函数。回调中返回成员信息
+         */
         NIMClient.getService(ChatRoomService.class).markNormalMember(!isNormal, new MemberOption(roomId, member.getAccount()))
                 .setCallback(new RequestCallback<ChatRoomMember>() {
                     @Override
@@ -622,9 +678,26 @@ public class OnlinePeopleFragment extends TFragment {
                 });
     }
 
-    // 设置临时禁言
+    /**
+     * 临时禁言
+     设置临时禁言时, 会收到类型为 ChatRoomMemberTempMuteAdd 的聊天室通知消息。
+     取消临时禁言时, 会收到类型为 ChatRoomMemberTempMuteRemove 的聊天室通知消息。
+     聊天室支持设置临时禁言，禁言时长时间到了，自动取消禁言。
+     设置临时禁言成功后的通知消息中，包含的时长是禁言剩余时长。若设置禁言时长为0，表示取消临时禁言。
+     若第一次设置的禁言时长还没结束，又设置第二次临时禁言，以第二次设置的时间开始计时。
+     * @param account
+     * @param content
+     * @param needNotify
+     */
     private void setTempMute(String account, String content, boolean needNotify) {
         MemberOption option = new MemberOption(roomId, account);
+        /**
+         * 设置聊天室成员临时禁言
+         * @param needNotify 是否需要发送广播通知，true：通知，false：不通知
+         * @param duration  禁言时长,单位秒
+         * @param memberOption 请求参数，包含聊天室id，帐号id以及可选的扩展字段
+         * @return InvocationFuture 可以设置回调函数。如果出错，会有具体的错误代码。
+         */
         NIMClient.getService(ChatRoomService.class).markChatRoomTempMute(needNotify, Long.parseLong(content), option)
                 .setCallback(new RequestCallback<Void>() {
                     @Override

@@ -158,7 +158,6 @@ public class NimApplication extends Application {
      */
     private SDKOptions getOptions() {
         SDKOptions options = new SDKOptions();
-
         // 如果将新消息通知提醒托管给SDK完成，需要添加以下配置。
         initStatusBarNotificationConfig(options);
 
@@ -278,8 +277,18 @@ public class NimApplication extends Application {
 
     /**
      * 通知消息过滤器（如果过滤则该消息不存储不上报）
+     * 消息过滤
+
+     支持单聊和群聊的通知类型消息过滤，支持音视频类型消息过滤。
+
+     通知消息是指 IMMessage#getMsgType 为 MsgTypeEnum#notification。
+     SDK 在 2.4.0 版本后支持上层指定过滤器决定是否要将通知消息，音视频消息存入 SDK 数据库（并通知上层收到该消息）。
+     请注意，注册过滤器的时机，建议放在 Application 的 onCreate 中， SDK 初始化之后。
+
+     示例：SDK 过滤群头像变更通知和过滤音视频类型消息。
      */
     private void registerIMMessageFilter() {
+        // 在 Application启动时注册，保证漫游、离线消息也能够回调此过滤器进行过滤。注意，过滤器的实现不要有耗时操作。
         NIMClient.getService(MsgService.class).registerIMMessageFilter(new IMMessageFilter() {
             @Override
             public boolean shouldIgnore(IMMessage message) {
@@ -288,14 +297,14 @@ public class NimApplication extends Application {
                         UpdateTeamAttachment attachment = (UpdateTeamAttachment) message.getAttachment();
                         for (Map.Entry<TeamFieldEnum, Object> field : attachment.getUpdatedFields().entrySet()) {
                             if (field.getKey() == TeamFieldEnum.ICON) {
-                                return true;
+                                return true; // 过滤
                             }
                         }
                     } else if (message.getAttachment() instanceof AVChatAttachment) {
-                        return true;
+                        return true; // 过滤
                     }
                 }
-                return false;
+                return false; // 不过滤
             }
         });
     }
@@ -401,6 +410,31 @@ public class NimApplication extends Application {
         //NimUIKit.registerMsgItemViewHolder();
     }
 
+    /**
+     * （ SDK 1.8.0 及以上版本支持）本地定制的通知栏提醒文案，目前支持配置Ticker文案（通知栏弹框条显示内容）和通知内容文案（下拉通知栏显示的通知内容），
+     * SDK 会在收到消息时回调 MessageNotifierCustomization 接口， 开发者可以根据昵称和收到的消息（消息类型、会话类型、发送者、消息扩展字段等）来决定要显示的通知内容。
+     * 如果上述两点都不定制(返回null)，将显示默认提醒内容：
+
+     文本消息：文本消息内容。
+
+     文件消息：{说话者}发来一条文件消息
+
+     图片消息：{说话者}发来一条图片消息
+
+     语音消息：{说话者}发来一条语音消息
+
+     视频消息：{说话者}发来一条视频消息
+
+     位置消息：{说话者}分享了一个地理位置
+
+     通知消息：{说话者}: 通知消息
+
+     提醒消息：{说话者}: 提醒消息
+
+     自定义消息：{说话者}: 自定义消息
+
+     除文本消息外，开发者可以通过 NimStrings 类修改这些默认提醒内容。
+     */
     private MessageNotifierCustomization messageNotifierCustomization = new MessageNotifierCustomization() {
         @Override
         public String makeNotifyContent(String nick, IMMessage message) {
